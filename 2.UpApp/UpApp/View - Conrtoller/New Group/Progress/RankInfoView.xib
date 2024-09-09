@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RankInfoView" customModule="UpApp" customModuleProvider="target">
+            <connections>
+                <outlet property="architect" destination="MCa-M7-Ab8" id="naB-qt-vxu"/>
+                <outlet property="creator" destination="eoi-SL-GHV" id="hdV-7Z-BEG"/>
+                <outlet property="intern" destination="ECr-qu-AYm" id="4jS-nR-rRP"/>
+                <outlet property="junior" destination="vWH-ij-yB6" id="THK-0c-Zpr"/>
+                <outlet property="middle" destination="oCk-oO-CvN" id="lDY-Mw-c5y"/>
+                <outlet property="rankInfoView" destination="khw-cq-F3S" id="DH2-fj-Uf5"/>
+                <outlet property="senior" destination="DRQ-xo-k5a" id="bGn-lE-AhO"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="khw-cq-F3S">
+                    <rect key="frame" x="15" y="223.66666666666663" width="363" height="405"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ECr-qu-AYm">
+                            <rect key="frame" x="15" y="15" width="333" height="50"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Intern [0, 100)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pqo-z3-jHq">
+                                    <rect key="frame" x="-22" y="0.0" width="378" height="50"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                    <color key="tintColor" red="0.56889227669999998" green="0.86078912019999998" blue="0.28549498670000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="27"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="PpE-cy-XVj"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="vWH-ij-yB6">
+                            <rect key="frame" x="15" y="80.000000000000028" width="333" height="50"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Junior [100, 1K)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="REC-PF-yyB">
+                                    <rect key="frame" x="-22" y="0.0" width="378" height="50"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                    <color key="tintColor" red="0.56889227669999998" green="0.86078912019999998" blue="0.28549498670000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="27"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="10"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    </userDefinedRuntimeAttributes>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="xXp-K4-8Ve"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="oCk-oO-CvN">
+                            <rect key="frame" x="15" y="145.00000000000003" width="333" height="50"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Middle [1K, 3K)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZMs-rg-XnK">
+                                    <rect key="frame" x="-22" y="0.0" width="378" height="50"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                    <color key="tintColor" red="0.56889227669999998" green="0.86078912019999998" blue="0.28549498670000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="27"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="10"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    </userDefinedRuntimeAttributes>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="mTA-eh-HCH"/>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="xaW-M0-pQJ"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="DRQ-xo-k5a">
+                            <rect key="frame" x="15" y="210.00000000000003" width="333" height="49.999999999999972"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Senior [3K, 6K)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Nbl-sM-L01">
+                                    <rect key="frame" x="-22" y="0.0" width="378" height="50"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                    <color key="tintColor" red="0.56889227669999998" green="0.86078912019999998" blue="0.28549498670000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="27"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="10"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    </userDefinedRuntimeAttributes>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="HgL-fH-IZj"/>
+                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="50" id="mCv-Xi-oRj"/>
+                                <constraint firstAttribute="height" constant="50" id="sLm-lg-Q1L"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="MCa-M7-Ab8">
+                            <rect key="frame" x="15" y="275" width="333" height="50"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Architect [6K, 10K)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Val-Qq-Uki">
+                                    <rect key="frame" x="-22" y="0.0" width="378" height="50"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                    <color key="tintColor" red="0.56889227669999998" green="0.86078912019999998" blue="0.28549498670000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="27"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="10"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    </userDefinedRuntimeAttributes>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="6z1-8t-02s"/>
+                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="50" id="9y6-t4-Osn"/>
+                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="50" id="GLf-r4-N8i"/>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="bEq-Tg-53b"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="eoi-SL-GHV">
+                            <rect key="frame" x="15" y="340" width="333" height="50"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Creator [10K...)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ol0-Q4-vbC">
+                                    <rect key="frame" x="-22" y="0.0" width="378" height="50"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                    <color key="tintColor" red="0.56889227669999998" green="0.86078912019999998" blue="0.28549498670000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="27"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="10"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    </userDefinedRuntimeAttributes>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="R4F-JN-yhs"/>
+                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="50" id="VYL-Gb-u9O"/>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="pSw-IF-tqa"/>
+                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="50" id="tPl-2i-7if"/>
+                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="50" id="vu6-Km-xsL"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="ECr-qu-AYm" firstAttribute="top" secondItem="khw-cq-F3S" secondAttribute="top" constant="15" id="0FZ-MR-kSE"/>
+                        <constraint firstAttribute="trailing" secondItem="oCk-oO-CvN" secondAttribute="trailing" constant="15" id="0tf-ti-7Td"/>
+                        <constraint firstItem="DRQ-xo-k5a" firstAttribute="leading" secondItem="khw-cq-F3S" secondAttribute="leading" constant="15" id="2m1-2D-arR"/>
+                        <constraint firstAttribute="trailing" secondItem="ECr-qu-AYm" secondAttribute="trailing" constant="15" id="2qY-rx-TpW"/>
+                        <constraint firstItem="MCa-M7-Ab8" firstAttribute="leading" secondItem="khw-cq-F3S" secondAttribute="leading" constant="15" id="8e6-uk-Hda"/>
+                        <constraint firstItem="vWH-ij-yB6" firstAttribute="leading" secondItem="khw-cq-F3S" secondAttribute="leading" constant="15" id="ESx-3a-Q7A"/>
+                        <constraint firstAttribute="trailing" secondItem="vWH-ij-yB6" secondAttribute="trailing" constant="15" id="G26-0M-HO2"/>
+                        <constraint firstAttribute="trailing" secondItem="DRQ-xo-k5a" secondAttribute="trailing" constant="15" id="Hqc-t9-IBj"/>
+                        <constraint firstItem="oCk-oO-CvN" firstAttribute="leading" secondItem="khw-cq-F3S" secondAttribute="leading" constant="15" id="I4m-sP-o7T"/>
+                        <constraint firstAttribute="height" constant="405" id="Iy1-dz-liS"/>
+                        <constraint firstItem="eoi-SL-GHV" firstAttribute="top" secondItem="MCa-M7-Ab8" secondAttribute="bottom" constant="15" id="KhA-zY-kL1"/>
+                        <constraint firstItem="oCk-oO-CvN" firstAttribute="top" secondItem="vWH-ij-yB6" secondAttribute="bottom" constant="15" id="Me9-Hx-xep"/>
+                        <constraint firstItem="eoi-SL-GHV" firstAttribute="leading" secondItem="khw-cq-F3S" secondAttribute="leading" constant="15" id="ayc-M4-EVy"/>
+                        <constraint firstItem="vWH-ij-yB6" firstAttribute="top" secondItem="ECr-qu-AYm" secondAttribute="bottom" constant="15" id="dOP-9o-vEV"/>
+                        <constraint firstItem="ECr-qu-AYm" firstAttribute="leading" secondItem="khw-cq-F3S" secondAttribute="leading" constant="15" id="dPg-wi-ovl"/>
+                        <constraint firstAttribute="trailing" secondItem="MCa-M7-Ab8" secondAttribute="trailing" constant="15" id="kD1-vY-XOF"/>
+                        <constraint firstItem="MCa-M7-Ab8" firstAttribute="top" secondItem="DRQ-xo-k5a" secondAttribute="bottom" constant="15" id="tCE-Bw-UPb"/>
+                        <constraint firstAttribute="trailing" secondItem="eoi-SL-GHV" secondAttribute="trailing" constant="15" id="tMn-Ud-15b"/>
+                        <constraint firstItem="DRQ-xo-k5a" firstAttribute="top" secondItem="oCk-oO-CvN" secondAttribute="bottom" constant="15" id="w1K-XC-Tap"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="khw-cq-F3S" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="O4n-ye-fnX"/>
+                <constraint firstItem="khw-cq-F3S" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="m0t-Ty-hza"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="khw-cq-F3S" secondAttribute="trailing" constant="15" id="p2j-lW-5XS"/>
+            </constraints>
+            <point key="canvasLocation" x="52.671755725190835" y="-12.67605633802817"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
