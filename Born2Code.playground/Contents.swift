@@ -6,7 +6,7 @@ func printSpaces(_ spaces: Int) {
     }
 }
 var bigHeart = false
-let timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
+let timer = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: true) { timer in
     printSpaces(10)
     if bigHeart {
         print("  @@@                     @@@   @@@           @  @@@@")
