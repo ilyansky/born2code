@@ -1,5 +1,4 @@
 import UIKit
-//import CoreLocation
 import FirebaseAuth
 import FirebaseFirestore
 
@@ -15,6 +14,8 @@ class RegisterViewController: UIViewController {
         super.viewDidLoad()
         setUI()
         setActions()
+
+        hideKeyboardByTapOnVoid()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -23,7 +24,7 @@ class RegisterViewController: UIViewController {
     }
 }
 
-// MARK: - Кнопки
+// MARK: - Actions
 extension RegisterViewController {
     private func setActions() {
         signUpButton.addTarget(self, action: #selector(tapSignUp), for: .touchUpInside)
@@ -31,6 +32,8 @@ extension RegisterViewController {
     }
     
     @objc func tapSignUp() { // fixme Все проверки выполняются асинк - nextVC не успевает принять значение false
+        signUpButton.turnOffButtonIf(true, title: "")
+        
         let login = loginTextField.text ?? ""
         let email = emailTextField.text ?? ""
         let password = passwordTextField.text ?? ""
@@ -40,12 +43,18 @@ extension RegisterViewController {
         let usersCollection = db.collection("users")
 
         validateUsersList(userCollection: usersCollection, login: login, email: email) {
-            [weak self] loginValid, emailValid, error in
+            [weak self] loginValid, emailValid, error in // нужен ли здесь weak self?
+            
+            defer {
+                self?.signUpButton.turnOffButtonIf(false, title: "Создать аккаунт")
+            }
+            
             guard let self = self else { return }
             var nextVc = true
             
             if let error = error {
                 print("Ошибка получения документов: \(error)")
+                signUpButton.turnOffButtonIf(false, title: "")
                 return
             }
             
@@ -109,7 +118,6 @@ extension RegisterViewController {
                     }
                     
                 }
-
             }
         }
 
@@ -120,7 +128,7 @@ extension RegisterViewController {
     }
 }
 
-// MARK: - Вспомогательные функции
+// MARK: - Support functions
 extension RegisterViewController {
     private func validateUsersList(userCollection: CollectionReference,
                               login: String,
@@ -181,15 +189,8 @@ extension RegisterViewController {
         return passwordPred.evaluate(with: password)
     }
 }
- 
-// MARK: - Делегаты
-extension RegisterViewController: UITextFieldDelegate {
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }
-}
 
-// MARK: - Пользовательский интерфейс
+// MARK: - UI
 extension RegisterViewController {
     private func setUI() {
         view.backgroundColor = .systemBackground
@@ -229,8 +230,6 @@ extension RegisterViewController {
             
             iHaveAnAccount.topAnchor.constraint(equalTo: signUpButton.bottomAnchor, constant: Src.Sizes.space10),
             iHaveAnAccount.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
-            iHaveAnAccount.heightAnchor.constraint(equalToConstant: Src.Sizes.space55),
-            iHaveAnAccount.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: Src.Sizes.space085)
         ])
     }
 }

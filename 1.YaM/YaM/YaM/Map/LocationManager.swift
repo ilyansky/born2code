@@ -1,5 +1,4 @@
 import CoreLocation
-//import FirebaseDatabase
 
 class LocationManager: NSObject, CLLocationManagerDelegate {
     private var locationManager: CLLocationManager!

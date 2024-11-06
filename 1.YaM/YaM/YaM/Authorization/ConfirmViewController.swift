@@ -11,7 +11,7 @@ class ConfirmViewController: UIViewController {
          label.text = "Письмо отправлено на Вашу почту. Перейдите по ссылке в письме.\nЕсли письмо не пришло - подождите некоторое время\nи проверьте папку 'Спам'."
         label.numberOfLines = 7
         label.textAlignment = .justified
-         return label
+        return label
      }()
     
     private let confirmed = AuthButton(title: "Подтверждено", hasBackground: true, fontSize: .big)
@@ -19,22 +19,27 @@ class ConfirmViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
+        
+        hideKeyboardByTapOnVoid()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-//        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "<- Назад", style: .plain, target: self, action: #selector(tapBack))
         navigationController?.navigationBar.isHidden = true
     }
-
 }
 
-// MARK: - Кнопки
+// MARK: - Actions
 extension ConfirmViewController {
     @objc func tapBack() {
         self.navigationController?.popViewController(animated: true)
     }
     
     @objc func tapConfirmed() {
+        confirmed.turnOffButtonIf(true, title: "")
+        
+        defer {
+            confirmed.turnOffButtonIf(false, title: "Подтверждено")
+        }
         
         if let sd = self.view.window?.windowScene?.delegate as? SceneDelegate {
             sd.checkAuth(vc: self, scene: false)
@@ -43,7 +48,7 @@ extension ConfirmViewController {
     }
 }
 
-// MARK: - Пользовательский интерфейс
+// MARK: - UI
 extension ConfirmViewController {
     private func setUI() {
         view.backgroundColor = .systemBackground
@@ -68,6 +73,6 @@ extension ConfirmViewController {
             confirmed.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
             confirmed.heightAnchor.constraint(equalToConstant: Src.Sizes.space55),
             confirmed.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: Src.Sizes.space085),
-            ])
+        ])
     }
 }

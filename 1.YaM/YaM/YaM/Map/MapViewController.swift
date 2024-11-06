@@ -69,7 +69,7 @@ class MapViewController: UIViewController {
     }
 }
 
-// MARK: - Навигационный модуль
+// MARK: - Navigation module
 extension MapViewController {
     // Получение собственных координат
     private func getSelfCoordinates() {
@@ -119,7 +119,7 @@ extension MapViewController {
     
 }
 
-// MARK: - Кнопки
+// MARK: - Actions
 extension MapViewController {
     private func setActions() {
         logout.addTarget(self, action: #selector(tapLogout), for: .touchUpInside)
@@ -165,7 +165,7 @@ extension MapViewController {
     }
 }
 
-// MARK: - Вспомогательные функции
+// MARK: - Support functions
 extension MapViewController {
     private func stopAllTimers() {
         timer1?.invalidate()
@@ -228,7 +228,7 @@ extension MapViewController {
     }
 }
 
-// MARK: - Пользовательский интерфейс
+// MARK: - UI
 extension MapViewController {
     private func setUI() {
         setMap()
@@ -287,7 +287,6 @@ extension MapViewController {
         ])
         
     }
-    
     
     private func setLogoutButton() {
         view.addSubview(logout)

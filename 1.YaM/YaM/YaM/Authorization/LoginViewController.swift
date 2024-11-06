@@ -7,13 +7,14 @@ class LoginViewController: UIViewController {
     private let passwordTextField = AuthTextField(fieldType: .password)
     
     private let iHaveNoAccount = AuthButton(title: "У меня нет аккаунта", hasBackground: false, fontSize: .med)
-    private let forgotPassword = AuthButton(title: "Забыли пароль?", hasBackground: false, fontSize: .small)
     private let signInButton = AuthButton(title: "Войти", hasBackground: true, fontSize: .big)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
         setActions()
+    
+        hideKeyboardByTapOnVoid()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -22,20 +23,24 @@ class LoginViewController: UIViewController {
     }
 }
 
-// MARK: - Кнопки
+// MARK: - Actions
 extension LoginViewController {
    
     private func setActions() {
         signInButton.addTarget(self, action: #selector(tapSignIn), for: .touchUpInside)
         iHaveNoAccount.addTarget(self, action: #selector(tapIHaveNoAccount), for: .touchUpInside)
-        forgotPassword.addTarget(self, action: #selector(tapForgotPassword), for: .touchUpInside)
     }
     
     @objc func tapSignIn() {
+        signInButton.turnOffButtonIf(true, title: "")
         let email = self.emailTextField.text ?? ""
         let password = self.passwordTextField.text ?? ""
         
         Auth.auth().signIn(withEmail: email, password: password) { result, error in
+            defer {
+                self.signInButton.turnOffButtonIf(false, title: "Войти")
+            }
+            
             if error != nil {
                 Src.showSignInErrorAlert(vc: self)
                 return
@@ -46,30 +51,15 @@ extension LoginViewController {
             }
             
         }
-        
-        
     }
-  
+    
     @objc func tapIHaveNoAccount() {
         let vc = RegisterViewController()
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    
-    @objc func tapForgotPassword() {
-        let vc = ForgotPasswordViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-
 }
 
-// MARK: - Делегаты
-extension LoginViewController: UITextFieldDelegate {
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }
-}
-
-// MARK: - Пользовательский интерфейс
+// MARK: - UI
 extension LoginViewController {
     private func setUI() {
         view.backgroundColor = .systemBackground
@@ -79,8 +69,6 @@ extension LoginViewController {
         view.addSubview(passwordTextField)
         view.addSubview(signInButton)
         view.addSubview(iHaveNoAccount)
-        view.addSubview(forgotPassword)
-        forgotPassword.isHidden = true
         
         NSLayoutConstraint.activate([
             headerView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
@@ -105,13 +93,6 @@ extension LoginViewController {
             
             iHaveNoAccount.topAnchor.constraint(equalTo: signInButton.bottomAnchor, constant: Src.Sizes.space10),
             iHaveNoAccount.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
-            iHaveNoAccount.heightAnchor.constraint(equalToConstant: Src.Sizes.space55),
-            iHaveNoAccount.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: Src.Sizes.space085),
-            
-            forgotPassword.topAnchor.constraint(equalTo: iHaveNoAccount.bottomAnchor),
-            forgotPassword.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
-            forgotPassword.heightAnchor.constraint(equalToConstant: Src.Sizes.space55),
-            forgotPassword.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: Src.Sizes.space085)
         ])
     }
 }

@@ -1,5 +1,18 @@
 import UIKit
 import FirebaseFirestore
+import UIKit
+
+extension UIViewController {
+    // Скрыть клавиатуру по тапу на пустое место
+    func hideKeyboardByTapOnVoid() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.hideKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func hideKeyboard() {
+        view.endEditing(true)
+    }
+}
 
 class Src {
     enum Color {

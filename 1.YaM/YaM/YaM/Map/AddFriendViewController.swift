@@ -18,6 +18,12 @@ class AddFriendViewController: UIViewController {
     }
 
     @objc func tapInvite() {
+        invitesButton.turnOffButtonIf(true, title: "")
+        
+        defer {
+            invitesButton.turnOffButtonIf(false, title: "Отправить запрос")
+        }
+        
         let login = friendLoginTextField.text ?? ""
          
         if login.isEmpty {
@@ -50,7 +56,7 @@ class AddFriendViewController: UIViewController {
 
 }
 
-// MARK: - Делегаты
+// MARK: - Delegates
 extension AddFriendViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return model.invitesList.count
@@ -93,7 +99,7 @@ extension AddFriendViewController {
     }
 }
 
-// MARK: - Пользовательский интерфейс
+// MARK: - UI
 extension AddFriendViewController {
     private func setUI() {
         view.backgroundColor = .systemBackground

@@ -17,7 +17,7 @@
                BlueprintIdentifier = "875D69502B8B686200D5DB58"
                BuildableName = "YaM.app"
                BlueprintName = "YaM"
-               ReferencedContainer = "container:YaM.xcodeproj">
+               ReferencedContainer = "container:Yam.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -46,7 +46,7 @@
             BlueprintIdentifier = "875D69502B8B686200D5DB58"
             BuildableName = "YaM.app"
             BlueprintName = "YaM"
-            ReferencedContainer = "container:YaM.xcodeproj">
+            ReferencedContainer = "container:Yam.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -63,7 +63,7 @@
             BlueprintIdentifier = "875D69502B8B686200D5DB58"
             BuildableName = "YaM.app"
             BlueprintName = "YaM"
-            ReferencedContainer = "container:YaM.xcodeproj">
+            ReferencedContainer = "container:Yam.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

@@ -13,7 +13,7 @@ class FriendsViewController: UIViewController {
     }
 }
 
-// MARK: - Делегаты
+// MARK: - Delegates
 extension FriendsViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -49,7 +49,7 @@ extension FriendsViewController: UITableViewDelegate, UITableViewDataSource {
     
 }
 
-// MARK: - Вспомогательные функции
+// MARK: - Support functions
 extension FriendsViewController {
     private func setCoreTableView() {
         friendsTable.register(FriendCell.self, forCellReuseIdentifier: TableView.cellIdFriend)
@@ -65,7 +65,7 @@ extension FriendsViewController {
 
 }
 
-// MARK: - Пользовательский интерфейс
+// MARK: - UI
 extension FriendsViewController {
     
     private func setUI() {

@@ -1,6 +1,6 @@
 import UIKit
 
-// Макет для текстовых полей
+// MARK: - Макет для текстовых полей
 class AuthTextField: UITextField {
 
     enum AuthTextFieldType {

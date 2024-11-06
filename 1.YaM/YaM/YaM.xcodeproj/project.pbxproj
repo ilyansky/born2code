@@ -23,7 +23,6 @@
 		875D69612B8B686300D5DB58 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 875D695F2B8B686300D5DB58 /* LaunchScreen.storyboard */; };
 		8760209D2BD17EA80044B197 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8760209B2BD17EA80044B197 /* AuthViewController.swift */; };
 		8760209E2BD17EA80044B197 /* AuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8760209C2BD17EA80044B197 /* AuthViewController.xib */; };
-		876A8BF32BF8F0F300428F56 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 876A8BF22BF8F0F300428F56 /* GoogleService-Info.plist */; };
 		8778BF562BD5885E00EB16EB /* AddFriendViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8778BF542BD5885E00EB16EB /* AddFriendViewController3.swift */; };
 		8778BF572BD5885E00EB16EB /* AddFriendViewController3.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8778BF552BD5885E00EB16EB /* AddFriendViewController3.xib */; };
 		8785D09E2BAAD20700C2E4CA /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 8785D09D2BAAD20700C2E4CA /* FirebaseAnalytics */; };
@@ -47,6 +46,7 @@
 		8785D0C22BAAD23200C2E4CA /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8785D0C12BAAD23200C2E4CA /* FirebaseRemoteConfigSwift */; };
 		8785D0C42BAAD23200C2E4CA /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 8785D0C32BAAD23200C2E4CA /* FirebaseStorage */; };
 		8785D0C62BAAD23200C2E4CA /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 8785D0C52BAAD23200C2E4CA /* FirebaseStorageCombine-Community */; };
+		87AC68282CDBB48D008E0B5E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 87AC68272CDBB48D008E0B5E /* GoogleService-Info.plist */; };
 		87AC7C232BDAED7C003C50FB /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87AC7C222BDAED7C003C50FB /* FriendsViewController.swift */; };
 		87AC7C252BDAF723003C50FB /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87AC7C242BDAF723003C50FB /* FriendCell.swift */; };
 		87AC7C272BDD1BCD003C50FB /* Trash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87AC7C262BDD1BCD003C50FB /* Trash.swift */; };
@@ -103,9 +103,9 @@
 		875D69622B8B686300D5DB58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8760209B2BD17EA80044B197 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		8760209C2BD17EA80044B197 /* AuthViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthViewController.xib; sourceTree = "<group>"; };
-		876A8BF22BF8F0F300428F56 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8778BF542BD5885E00EB16EB /* AddFriendViewController3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendViewController3.swift; sourceTree = "<group>"; };
 		8778BF552BD5885E00EB16EB /* AddFriendViewController3.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddFriendViewController3.xib; sourceTree = "<group>"; };
+		87AC68272CDBB48D008E0B5E /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		87AC7C222BDAED7C003C50FB /* FriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
 		87AC7C242BDAF723003C50FB /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
 		87AC7C262BDD1BCD003C50FB /* Trash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trash.swift; sourceTree = "<group>"; };
@@ -202,7 +202,7 @@
 		875D69482B8B686200D5DB58 = {
 			isa = PBXGroup;
 			children = (
-				875D69532B8B686200D5DB58 /* YaM */,
+				875D69532B8B686200D5DB58 /* Yam */,
 				875D69522B8B686200D5DB58 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -215,7 +215,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		875D69532B8B686200D5DB58 /* YaM */ = {
+		875D69532B8B686200D5DB58 /* Yam */ = {
 			isa = PBXGroup;
 			children = (
 				87F1AD322B962832003C5634 /* Application */,
@@ -224,7 +224,7 @@
 				870B5E2E2BDE9BB80005C090 /* Common */,
 				87F1AD332B962861003C5634 /* Support */,
 			);
-			path = YaM;
+			path = Yam;
 			sourceTree = "<group>";
 		};
 		876020992BD17E7F0044B197 /* Map */ = {
@@ -268,7 +268,7 @@
 				875D695D2B8B686300D5DB58 /* Assets.xcassets */,
 				875D695F2B8B686300D5DB58 /* LaunchScreen.storyboard */,
 				875D69622B8B686300D5DB58 /* Info.plist */,
-				876A8BF22BF8F0F300428F56 /* GoogleService-Info.plist */,
+				87AC68272CDBB48D008E0B5E /* GoogleService-Info.plist */,
 				870EA5152BD711D100D495EE /* Trash */,
 			);
 			path = Support;
@@ -359,7 +359,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 875D694C2B8B686200D5DB58 /* Build configuration list for PBXProject "YaM" */;
+			buildConfigurationList = 875D694C2B8B686200D5DB58 /* Build configuration list for PBXProject "Yam" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -387,7 +387,7 @@
 			files = (
 				875D69612B8B686300D5DB58 /* LaunchScreen.storyboard in Resources */,
 				875D695E2B8B686300D5DB58 /* Assets.xcassets in Resources */,
-				876A8BF32BF8F0F300428F56 /* GoogleService-Info.plist in Resources */,
+				87AC68282CDBB48D008E0B5E /* GoogleService-Info.plist in Resources */,
 				8760209E2BD17EA80044B197 /* AuthViewController.xib in Resources */,
 				8778BF572BD5885E00EB16EB /* AddFriendViewController3.xib in Resources */,
 			);
@@ -567,12 +567,14 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FP582B2GU2;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = YaM/Support/Info.plist;
+				INFOPLIST_FILE = Yam/Support/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Yam - You and me";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Разрешить приложению использовать ваше местоположение?";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Automatic;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -580,7 +582,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.wannabepurple.YaM;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ilyansky.Yam;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -597,12 +599,14 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FP582B2GU2;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = YaM/Support/Info.plist;
+				INFOPLIST_FILE = Yam/Support/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Yam - You and me";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Разрешить приложению использовать ваше местоположение?";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Automatic;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -610,7 +614,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.wannabepurple.YaM;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ilyansky.Yam;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -621,7 +625,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		875D694C2B8B686200D5DB58 /* Build configuration list for PBXProject "YaM" */ = {
+		875D694C2B8B686200D5DB58 /* Build configuration list for PBXProject "Yam" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				875D69632B8B686300D5DB58 /* Debug */,

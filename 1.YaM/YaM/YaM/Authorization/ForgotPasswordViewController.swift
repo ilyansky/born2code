@@ -9,6 +9,8 @@ class ForgotPasswordViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
+        
+        hideKeyboardByTapOnVoid()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -17,7 +19,7 @@ class ForgotPasswordViewController: UIViewController {
     }
 }
 
-// MARK: - Кнопки
+// MARK: - Actions
 extension ForgotPasswordViewController {
     @objc func tapBack() {
         self.navigationController?.popViewController(animated: true)
@@ -46,14 +48,7 @@ extension ForgotPasswordViewController {
     }
 }
 
-// MARK: - Делегаты
-extension ForgotPasswordViewController: UITextFieldDelegate {
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }
-}
-
-// MARK: - Пользовательский интерфейс
+// MARK: - UI
 extension ForgotPasswordViewController {
     private func setUI() {
         view.backgroundColor = .systemBackground
@@ -76,10 +71,6 @@ extension ForgotPasswordViewController {
             
             recoverButton.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: Src.Sizes.space15),
             recoverButton.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
-            recoverButton.heightAnchor.constraint(equalToConstant: Src.Sizes.space55),
-            recoverButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: Src.Sizes.space085)
-            
-            
         ])
     }
     
