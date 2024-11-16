@@ -16,6 +16,7 @@
 		8715336B2CE8F61E001CFC63 /* TaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871533632CE8F61E001CFC63 /* TaskView.swift */; };
 		8715336C2CE8F61E001CFC63 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8715335A2CE8F61E001CFC63 /* Preview Assets.xcassets */; };
 		8715336D2CE8F61E001CFC63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8715335C2CE8F61E001CFC63 /* Assets.xcassets */; };
+		871533812CE8FFBA001CFC63 /* TasksListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871533802CE8FFBA001CFC63 /* TasksListCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		871533612CE8F61E001CFC63 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		871533622CE8F61E001CFC63 /* TasksListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksListView.swift; sourceTree = "<group>"; };
 		871533632CE8F61E001CFC63 /* TaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskView.swift; sourceTree = "<group>"; };
+		871533802CE8FFBA001CFC63 /* TasksListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksListCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 				8715335F2CE8F61E001CFC63 /* MyFocusApp.swift */,
 				871533612CE8F61E001CFC63 /* Router.swift */,
 				871533622CE8F61E001CFC63 /* TasksListView.swift */,
+				871533802CE8FFBA001CFC63 /* TasksListCell.swift */,
 				871533632CE8F61E001CFC63 /* TaskView.swift */,
 				871533602CE8F61E001CFC63 /* Presenter.swift */,
 				8715335E2CE8F61E001CFC63 /* Interactor.swift */,
@@ -155,6 +158,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				871533812CE8FFBA001CFC63 /* TasksListCell.swift in Sources */,
 				871533652CE8F61E001CFC63 /* Entity.swift in Sources */,
 				871533662CE8F61E001CFC63 /* Interactor.swift in Sources */,
 				871533672CE8F61E001CFC63 /* MyFocusApp.swift in Sources */,

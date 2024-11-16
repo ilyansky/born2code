@@ -13,4 +13,8 @@ class Presenter: ObservableObject {
     func loadTasks() {
         tasks = interactor.fetchTasks()
     }
+
+    func fetchDateString(for task: Task) -> String {
+        return interactor.convertDateToString(for: task)
+    }
 }

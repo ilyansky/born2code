@@ -7,14 +7,16 @@ struct TasksListView: View {
         NavigationView {
             List {
                 ForEach(presenter.tasks, id: \.id) { task in
-                    NavigationLink(destination: Router.createTaskView(text: task.text)) {
-                        Text(task.text)
-                    }
-
+                    
+                    TasksListCell(title: task.title,
+                                  text: task.text,
+                                  date: presenter.fetchDateString(for: task))
                 }
             }
+            .listStyle(.plain)
 
-                .navigationTitle("Задачи")
+
+            .navigationTitle("Задачи")
         }
     }
 }
