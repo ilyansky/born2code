@@ -25,7 +25,6 @@ class LoginViewController: UIViewController {
 
 // MARK: - Actions
 extension LoginViewController {
-   
     private func setActions() {
         signInButton.addTarget(self, action: #selector(tapSignIn), for: .touchUpInside)
         iHaveNoAccount.addTarget(self, action: #selector(tapIHaveNoAccount), for: .touchUpInside)

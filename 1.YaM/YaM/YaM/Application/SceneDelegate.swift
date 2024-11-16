@@ -23,16 +23,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         self.window = window
         self.window?.makeKeyAndVisible()
-        
     }
+    
     public func checkAuth(vc: UIViewController, scene: Bool) {
         guard let user = Auth.auth().currentUser else { 
             self.transitTo(rootViewController: vc)
             return
         }
+        
         DispatchQueue.main.async {
             user.reload { _ in
-                
                 switch user.isEmailVerified {
                 case true:
                     self.transitTo(rootViewController: MapViewController())
@@ -46,30 +46,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             }
         }
     }
+    
     private func transitTo(rootViewController: UIViewController) {
         let nav = UINavigationController(rootViewController: rootViewController)
         nav.modalPresentationStyle = .fullScreen
         self.window?.rootViewController = nav
     }
-    
-    /*
-    private func goToViewController(viewController: UIViewController) {
-        DispatchQueue.main.async { [weak self] in
-            UIView.animate(withDuration: 0.25) {
-                self?.window?.layer.opacity = 0
-            } completion: { [weak self] _ in
-                let nav = UINavigationController(rootViewController: viewController)
-                nav.modalPresentationStyle = .fullScreen
-                self?.window?.rootViewController = nav
-                
-                UIView.animate(withDuration: 0.25) { [weak self] in
-                    self?.window?.layer.opacity = 1
-                    
-                }
-            }
-        }
-    }
-    */
-
 }
 

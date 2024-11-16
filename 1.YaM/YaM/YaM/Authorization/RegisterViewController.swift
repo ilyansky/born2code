@@ -31,7 +31,7 @@ extension RegisterViewController {
         iHaveAnAccount.addTarget(self, action: #selector(tapIHaveNoAccount), for: .touchUpInside)
     }
     
-    @objc func tapSignUp() { // fixme Все проверки выполняются асинк - nextVC не успевает принять значение false
+    @objc func tapSignUp() {
         signUpButton.turnOffButtonIf(true, title: "")
         
         let login = loginTextField.text ?? ""
@@ -43,7 +43,7 @@ extension RegisterViewController {
         let usersCollection = db.collection("users")
 
         validateUsersList(userCollection: usersCollection, login: login, email: email) {
-            [weak self] loginValid, emailValid, error in // нужен ли здесь weak self?
+            [weak self] loginValid, emailValid, error in
             
             defer {
                 self?.signUpButton.turnOffButtonIf(false, title: "Создать аккаунт")
