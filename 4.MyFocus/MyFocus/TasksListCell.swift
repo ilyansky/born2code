@@ -2,7 +2,6 @@ import SwiftUI
 
 struct TasksListCell: View {
     @State private var done = false
-    @State private var isOnNavLink = false
     private let checkboxSize: CGFloat = 30
 
     var title: String
@@ -10,67 +9,47 @@ struct TasksListCell: View {
     var date: String
 
     var body: some View {
-        Button {
-            isOnNavLink = true
-        } label: {
+        HStack() {
+            // Checkbox
             VStack {
-                Spacer()
-                HStack() {
-                    // Checkbox
-                    VStack {
-                        Toggle(isOn: $done) {
-                            switch done {
-                            case true:
-                                Image(systemName: "checkmark.circle")
-                                    .resizable()
-                                    .frame(width: checkboxSize, height: checkboxSize)
-                                    .foregroundColor(.yellow)
-                            case false:
-                                Image(systemName: "circle")
-                                    .resizable()
-                                    .frame(width: checkboxSize, height: checkboxSize)
-                            }
-                        }
-                        .toggleStyle(.button)
-                        .buttonStyle(PlainButtonStyle())
-
-                        Spacer()
+                Toggle(isOn: $done) {
+                    switch done {
+                    case true:
+                        Image(systemName: "checkmark.circle")
+                            .resizable()
+                            .frame(width: checkboxSize, height: checkboxSize)
+                            .foregroundColor(.yellow)
+                    case false:
+                        Image(systemName: "circle")
+                            .resizable()
+                            .frame(width: checkboxSize, height: checkboxSize)
                     }
-
-                    // Title, text, date
-                    VStack(alignment: .leading) {
-                        Text(title)
-                            .frame(alignment: .leading)
-                            .lineLimit(1)
-                            .font(.title2)
-                            .bold()
-
-                        Text(text)
-                            .lineLimit(2)
-
-                        Text(date)
-                        //                    .font()
-                        Spacer()
-                    }
-                    Spacer()
                 }
-                NavigationLink("",
-                               destination: Router.createTaskView(text: "text"),
-                               isActive: $isOnNavLink)
-                .navigationTitle("Назад")
-//                    .hidden()
+                .toggleStyle(.button)
+                .buttonStyle(PlainButtonStyle())
+
                 Spacer()
             }
+            .padding(.top, 15)
 
+            // Title, text, date
+            VStack(alignment: .leading) {
+                Text(title)
+                    .frame(alignment: .leading)
+                    .lineLimit(1)
+                    .font(.title2)
+                    .bold()
+
+                Text(text)
+                    .lineLimit(2)
+
+                Text(date)
+                Spacer()
+            }
+            .padding(.top)
         }
     }
-
-
-
-
-
 }
-
 
 #Preview {
     TasksListCell(

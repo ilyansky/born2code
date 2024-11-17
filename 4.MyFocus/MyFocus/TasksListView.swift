@@ -4,8 +4,8 @@ struct TasksListView: View {
     @ObservedObject var presenter: Presenter
 
     var body: some View {
-        // Custom navigation title
         NavigationStack {
+            // Custom navigation title
             HStack {
                 Text("Задачи")
                     .font(.largeTitle)
@@ -13,18 +13,23 @@ struct TasksListView: View {
                 Spacer()
             }
             .padding()
-            List {
-                ForEach(presenter.tasks, id: \.id) { task in
+            List(presenter.tasks) { task in
+                NavigationLink {
+                    Router.createTaskView(text: task.text)
+                } label: {
                     TasksListCell(title: task.title,
                                   text: task.text,
                                   date: presenter.fetchDateString(for: task))
                 }
-                .background(.blue)
             }
             .listStyle(.plain)
             .navigationBarHidden(true)
+            .foregroundStyle(.white, .white, .black)
         }
+
+
     }
+
 }
 
 #Preview {
