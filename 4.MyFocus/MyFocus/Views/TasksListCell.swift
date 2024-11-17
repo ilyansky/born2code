@@ -18,11 +18,12 @@ struct TasksListCell: View {
                         Image(systemName: "checkmark.circle")
                             .resizable()
                             .frame(width: checkboxSize, height: checkboxSize)
-                            .foregroundColor(.yellow)
+                            .foregroundColor(Color.cyellow)
                     case false:
                         Image(systemName: "circle")
                             .resizable()
                             .frame(width: checkboxSize, height: checkboxSize)
+                            .foregroundColor(Color.cstroke)
                     }
                 }
                 .toggleStyle(.button)
@@ -39,11 +40,18 @@ struct TasksListCell: View {
                     .lineLimit(1)
                     .font(.title2)
                     .bold()
+                    .padding(.bottom, 1)
+                    .foregroundStyle(done ? Color.cgray : Color.cwhite)
+                    .strikethrough(done ? true : false)
 
                 Text(text)
                     .lineLimit(2)
+                    .foregroundStyle(done ? Color.cgray : Color.cwhite)
 
                 Text(date)
+                    .foregroundStyle(Color.cgray)
+                    .padding(.top, 1)
+
                 Spacer()
             }
             .padding(.top)
@@ -53,8 +61,8 @@ struct TasksListCell: View {
 
 #Preview {
     TasksListCell(
-        title: "Title Title Title Title Title Title Title Title Title Title",
-        text: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum ",
+        title: "Some title",
+        text: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
         date: "09/10/24"
     )
 }

@@ -12,11 +12,11 @@
 		871533672CE8F61E001CFC63 /* MyFocusApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8715335F2CE8F61E001CFC63 /* MyFocusApp.swift */; };
 		871533682CE8F61E001CFC63 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871533602CE8F61E001CFC63 /* Presenter.swift */; };
 		871533692CE8F61E001CFC63 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871533612CE8F61E001CFC63 /* Router.swift */; };
-		8715336A2CE8F61E001CFC63 /* TasksListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871533622CE8F61E001CFC63 /* TasksListView.swift */; };
-		8715336B2CE8F61E001CFC63 /* TaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871533632CE8F61E001CFC63 /* TaskView.swift */; };
 		8715336C2CE8F61E001CFC63 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8715335A2CE8F61E001CFC63 /* Preview Assets.xcassets */; };
 		8715336D2CE8F61E001CFC63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8715335C2CE8F61E001CFC63 /* Assets.xcassets */; };
-		871533812CE8FFBA001CFC63 /* TasksListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871533802CE8FFBA001CFC63 /* TasksListCell.swift */; };
+		879D59232CEA301A0080BD66 /* TasksListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879D591F2CEA301A0080BD66 /* TasksListCell.swift */; };
+		879D59242CEA301A0080BD66 /* TasksListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879D59202CEA301A0080BD66 /* TasksListView.swift */; };
+		879D59252CEA301A0080BD66 /* TaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879D59212CEA301A0080BD66 /* TaskView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,9 +28,9 @@
 		8715335F2CE8F61E001CFC63 /* MyFocusApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFocusApp.swift; sourceTree = "<group>"; };
 		871533602CE8F61E001CFC63 /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
 		871533612CE8F61E001CFC63 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
-		871533622CE8F61E001CFC63 /* TasksListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksListView.swift; sourceTree = "<group>"; };
-		871533632CE8F61E001CFC63 /* TaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskView.swift; sourceTree = "<group>"; };
-		871533802CE8FFBA001CFC63 /* TasksListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksListCell.swift; sourceTree = "<group>"; };
+		879D591F2CEA301A0080BD66 /* TasksListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksListCell.swift; sourceTree = "<group>"; };
+		879D59202CEA301A0080BD66 /* TasksListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksListView.swift; sourceTree = "<group>"; };
+		879D59212CEA301A0080BD66 /* TaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,18 +71,34 @@
 		871533642CE8F61E001CFC63 /* MyFocus */ = {
 			isa = PBXGroup;
 			children = (
-				8715335B2CE8F61E001CFC63 /* Preview Content */,
-				8715335C2CE8F61E001CFC63 /* Assets.xcassets */,
+				879D59262CEA303D0080BD66 /* Source */,
+				879D59222CEA301A0080BD66 /* Views */,
 				8715335F2CE8F61E001CFC63 /* MyFocusApp.swift */,
 				871533612CE8F61E001CFC63 /* Router.swift */,
-				871533622CE8F61E001CFC63 /* TasksListView.swift */,
-				871533802CE8FFBA001CFC63 /* TasksListCell.swift */,
-				871533632CE8F61E001CFC63 /* TaskView.swift */,
 				871533602CE8F61E001CFC63 /* Presenter.swift */,
 				8715335E2CE8F61E001CFC63 /* Interactor.swift */,
-				8715335D2CE8F61E001CFC63 /* Entity.swift */,
 			);
 			path = MyFocus;
+			sourceTree = "<group>";
+		};
+		879D59222CEA301A0080BD66 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				879D59202CEA301A0080BD66 /* TasksListView.swift */,
+				879D591F2CEA301A0080BD66 /* TasksListCell.swift */,
+				879D59212CEA301A0080BD66 /* TaskView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		879D59262CEA303D0080BD66 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				8715335B2CE8F61E001CFC63 /* Preview Content */,
+				8715335C2CE8F61E001CFC63 /* Assets.xcassets */,
+				8715335D2CE8F61E001CFC63 /* Entity.swift */,
+			);
+			path = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -158,14 +174,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				871533812CE8FFBA001CFC63 /* TasksListCell.swift in Sources */,
 				871533652CE8F61E001CFC63 /* Entity.swift in Sources */,
 				871533662CE8F61E001CFC63 /* Interactor.swift in Sources */,
 				871533672CE8F61E001CFC63 /* MyFocusApp.swift in Sources */,
 				871533682CE8F61E001CFC63 /* Presenter.swift in Sources */,
+				879D59232CEA301A0080BD66 /* TasksListCell.swift in Sources */,
+				879D59242CEA301A0080BD66 /* TasksListView.swift in Sources */,
+				879D59252CEA301A0080BD66 /* TaskView.swift in Sources */,
 				871533692CE8F61E001CFC63 /* Router.swift in Sources */,
-				8715336A2CE8F61E001CFC63 /* TasksListView.swift in Sources */,
-				8715336B2CE8F61E001CFC63 /* TaskView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,7 +314,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"MyFocus/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"MyFocus/Source/Preview Content\"";
 				DEVELOPMENT_TEAM = FP582B2GU2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -333,7 +349,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"MyFocus/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"MyFocus/Source/Preview Content\"";
 				DEVELOPMENT_TEAM = FP582B2GU2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;

@@ -15,9 +15,9 @@ struct TaskView: View {
                     Image(systemName: "chevron.compact.left")
                         .resizable()
                         .frame(width: 15, height: 15)
-                        .foregroundStyle(.yellow)
+                        .foregroundStyle(Color.yellow)
                     Text("Назад")
-                        .foregroundStyle(.yellow)
+                        .foregroundStyle(Color.yellow)
                     Spacer()
                 }
             }

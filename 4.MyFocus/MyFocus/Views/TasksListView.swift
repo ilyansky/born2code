@@ -13,6 +13,12 @@ struct TasksListView: View {
                 Spacer()
             }
             .padding()
+
+            ZStack {
+//                TextField
+            }
+
+            // Notes
             List(presenter.tasks) { task in
                 NavigationLink {
                     Router.createTaskView(text: task.text)
@@ -24,7 +30,7 @@ struct TasksListView: View {
             }
             .listStyle(.plain)
             .navigationBarHidden(true)
-            .foregroundStyle(.white, .white, .black)
+            .foregroundStyle(.white, .white, Color("cblack"))
         }
 
 
