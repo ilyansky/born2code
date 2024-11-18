@@ -7,37 +7,43 @@ struct TaskView: View {
     var text: String
     var date: String
 
-    @State private var titleField: String = ""
-    @State private var textField: String = ""
+    @State private var titleField: String
+    @State private var textField: String
 
+    init(title: String, text: String, date: String) {
+        self.title = title
+        self.text = text
+        self.date = date
+        self.titleField = title
+        self.textField = text
+    }
 
     var body: some View {
 
         VStack(alignment: .leading) {
             CustomBackButton()
 
-            TextField(text, text: $titleField)
-                .padding([.top, .bottom], 10)
-                .padding([.leading, .trailing], 37)
-                .background(Color.cgray)
-                .clipShape(RoundedRectangle(cornerRadius: 10))
+            TextField("Заголовок", text: $titleField, axis: .vertical)
+                .textFieldStyle(.plain)
                 .disableAutocorrection(true)
-                .font(.title2)
-                .fontWeight(.semibold)
+                .padding([.leading, .trailing])
+                .padding(.bottom, 5)
+                .font(Font.system(size: 40))
+                .fontWeight(.bold)
 
-//            TextField(title)
-////                .font(.largeTitle)
-//                .padding(.leading, 15)
-//                .font(Font.system(size: 40))
-//                .fontWeight(.bold)
+            Text(date)
+                .padding([.leading, .trailing])
+                .foregroundStyle(Color.cgray2)
 
-
-            // Main content
-            Text(text)
+            TextField("Текст заметки", text: $textField, axis: .vertical)
+                .textFieldStyle(.plain)
+                .disableAutocorrection(true)
+                .padding()
+                .font(Font.system(size: 19))
 
             Spacer()
         }
-//        .padding()
+
     }
 
 }
@@ -46,23 +52,38 @@ struct CustomBackButton: View {
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
 
     var body: some View {
-        Button  {
-            presentationMode.wrappedValue.dismiss()
-        } label: {
-            HStack {
-                Image(systemName: "chevron.compact.left")
-                    .resizable()
-                    .frame(width: 15, height: 15)
-                    .foregroundStyle(Color.yellow)
-                Text("Назад")
-                    .foregroundStyle(Color.yellow)
-                Spacer()
+        HStack {
+            Button  {
+                presentationMode.wrappedValue.dismiss()
+            } label: {
+                HStack {
+                    Image(systemName: "chevron.compact.left")
+                        .resizable()
+                        .frame(width: 15, height: 15)
+                        .foregroundStyle(Color.yellow)
+                    Text("Назад")
+                        .foregroundStyle(Color.yellow)
+                    Spacer()
+                }
             }
+            .padding()
+
+            Spacer()
+
+            Button  {
+                UIApplication.shared.endEditing()
+            } label: {
+                Text("Готово")
+                    .foregroundStyle(Color.yellow)
+
+            }
+            .padding()
         }
-        .padding()
+
+
     }
 }
 
 #Preview {
-    TaskView(title: "Заняться спортом", text: "Some text", date: "19/11/24")
+    TaskView(title: "Заняться спортом", text: "Составить список необходимых продуктов для ужина. Не забыть проверить, что уже есть в холодильнике.", date: "19/11/24")
 }
