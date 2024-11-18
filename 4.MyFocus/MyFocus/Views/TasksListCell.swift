@@ -9,61 +9,68 @@ struct TasksListCell: View {
     var date: String
 
     var body: some View {
-        HStack() {
-            // Checkbox
-            VStack {
-                Toggle(isOn: $done) {
-                    switch done {
-                    case true:
-                        Image(systemName: "checkmark.circle")
-                            .resizable()
-                            .frame(width: checkboxSize, height: checkboxSize)
-                            .foregroundColor(Color.cyellow)
-                    case false:
-                        Image(systemName: "circle")
-                            .resizable()
-                            .frame(width: checkboxSize, height: checkboxSize)
-                            .foregroundColor(Color.cstroke)
+
+        VStack {
+            HStack() {
+                // Checkbox
+                VStack {
+                    Toggle(isOn: $done) {
+                        switch done {
+                        case true:
+                            Image(systemName: "checkmark.circle")
+                                .resizable()
+                                .frame(width: checkboxSize, height: checkboxSize)
+                                .foregroundColor(Color.cyellow)
+                                .fontWeight(.thin)
+                        case false:
+                            Image(systemName: "circle")
+                                .resizable()
+                                .frame(width: checkboxSize, height: checkboxSize)
+                                .foregroundColor(Color.cstroke)
+                                .fontWeight(.thin)
+                        }
                     }
+                    .toggleStyle(.button)
+                    .buttonStyle(PlainButtonStyle())
+
+                    Spacer()
                 }
-                .toggleStyle(.button)
-                .buttonStyle(PlainButtonStyle())
+                .padding(.top, 15)
+
+                // Title, text, date
+                VStack(alignment: .leading) {
+                    Text(title)
+                        .frame(alignment: .leading)
+                        .lineLimit(1)
+                        .font(.title2)
+                        .bold()
+                        .padding(.bottom, 1)
+                        .foregroundStyle(done ? Color.cgray2 : Color.cwhite)
+                        .strikethrough(done ? true : false)
+
+                    Text(text)
+                        .lineLimit(2)
+                        .foregroundStyle(done ? Color.cgray2 : Color.cwhite)
+
+                    Text(date)
+                        .foregroundStyle(Color.cgray2)
+                        .padding(.top, 1)
+
+                    Spacer()
+                }
+                .padding(.top)
+                .multilineTextAlignment(.leading)
 
                 Spacer()
             }
-            .padding(.top, 15)
 
-            // Title, text, date
-            VStack(alignment: .leading) {
-                Text(title)
-                    .frame(alignment: .leading)
-                    .lineLimit(1)
-                    .font(.title2)
-                    .bold()
-                    .padding(.bottom, 1)
-                    .foregroundStyle(done ? Color.cstroke : Color.cwhite)
-                    .strikethrough(done ? true : false)
+            Rectangle()
+                .fill(Color.cstroke)
+                .frame(maxWidth: .infinity, maxHeight: 1)
+                .padding(.top)
 
-                Text(text)
-                    .lineLimit(2)
-                    .foregroundStyle(done ? Color.cstroke : Color.cwhite)
-
-                Text(date)
-                    .foregroundStyle(Color.cstroke)
-                    .padding(.top, 1)
-
-                Rectangle()
-                    .fill(Color.cgray)
-                    .frame(height: 2)
-
-                Spacer()
-            }
-            .padding(.top)
-            .multilineTextAlignment(.leading)
-            
-
-            Spacer()
         }
+
     }
 }
 
