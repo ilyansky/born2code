@@ -14,17 +14,30 @@ class Interactor: InteractorProtocol {
                                       date: Date()),
                                  Task(title: "Title3",
                                       text: "Text3",
-                                      date: Date())
+                                      date: Date()),
+                                 Task(title: "Title3",
+                                      text: "Text3",
+                                      date: Date()),
+                                 Task(title: "Title3",
+                                      text: "Text3",
+                                      date: Date()),
+                                 Task(title: "Title3",
+                                      text: "Text3",
+                                      date: Date()),
     ]
 
     func fetchTasks() -> [Task] {
         return tasks
     }
 
+//    func convertTasksAmountToString() -> String {
+//        
+//    }
+
     func convertDateToString(for task: Task) -> String {
         let date = task.date
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd/mm/yy"
+        formatter.dateFormat = "dd/MM/yy"
         let dateString = formatter.string(from: date)
         return dateString
     }

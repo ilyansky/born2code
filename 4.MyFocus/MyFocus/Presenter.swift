@@ -1,9 +1,8 @@
 import SwiftUI
 
 class Presenter: ObservableObject {
-    @Published var tasks: [Task] = []
-
     private let interactor: InteractorProtocol
+    var tasks: [Task] = []
 
     init(interactor: InteractorProtocol) {
         self.interactor = interactor
@@ -12,6 +11,11 @@ class Presenter: ObservableObject {
 
     func loadTasks() {
         tasks = interactor.fetchTasks()
+    }
+
+    func fetchTasks() -> [Task] {
+        print(1)
+        return interactor.fetchTasks()
     }
 
     func fetchDateString(for task: Task) -> String {

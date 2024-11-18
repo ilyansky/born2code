@@ -41,20 +41,28 @@ struct TasksListCell: View {
                     .font(.title2)
                     .bold()
                     .padding(.bottom, 1)
-                    .foregroundStyle(done ? Color.cgray : Color.cwhite)
+                    .foregroundStyle(done ? Color.cstroke : Color.cwhite)
                     .strikethrough(done ? true : false)
 
                 Text(text)
                     .lineLimit(2)
-                    .foregroundStyle(done ? Color.cgray : Color.cwhite)
+                    .foregroundStyle(done ? Color.cstroke : Color.cwhite)
 
                 Text(date)
-                    .foregroundStyle(Color.cgray)
+                    .foregroundStyle(Color.cstroke)
                     .padding(.top, 1)
+
+                Rectangle()
+                    .fill(Color.cgray)
+                    .frame(height: 2)
 
                 Spacer()
             }
             .padding(.top)
+            .multilineTextAlignment(.leading)
+            
+
+            Spacer()
         }
     }
 }
