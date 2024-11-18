@@ -2,33 +2,20 @@ import SwiftUI
 
 struct TasksListCell: View {
     @State private var done = false
-    private let checkboxSize: CGFloat = 30
 
     var title: String
     var text: String
     var date: String
 
     var body: some View {
-
         VStack {
             HStack() {
                 // Checkbox
                 VStack {
                     Toggle(isOn: $done) {
-                        switch done {
-                        case true:
-                            Image(systemName: "checkmark.circle")
-                                .resizable()
-                                .frame(width: checkboxSize, height: checkboxSize)
-                                .foregroundColor(Color.cyellow)
-                                .fontWeight(.thin)
-                        case false:
-                            Image(systemName: "circle")
-                                .resizable()
-                                .frame(width: checkboxSize, height: checkboxSize)
-                                .foregroundColor(Color.cstroke)
-                                .fontWeight(.thin)
-                        }
+                        done
+                        ? CheckBox(name: "checkmark.circle", color: Color.cyellow)
+                        : CheckBox(name: "circle", color: Color.cstroke)
                     }
                     .toggleStyle(.button)
                     .buttonStyle(PlainButtonStyle())
@@ -68,9 +55,22 @@ struct TasksListCell: View {
                 .fill(Color.cstroke)
                 .frame(maxWidth: .infinity, maxHeight: 1)
                 .padding(.top)
-
         }
+    }
+}
 
+struct CheckBox: View {
+    var name: String
+    var color: Color
+
+    private let checkboxSize: CGFloat = 30
+
+    var body: some View {
+        Image(systemName: name)
+            .resizable()
+            .frame(width: checkboxSize, height: checkboxSize)
+            .foregroundColor(color)
+            .fontWeight(.thin)
     }
 }
 

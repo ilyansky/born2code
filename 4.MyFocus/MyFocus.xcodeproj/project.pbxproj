@@ -17,6 +17,7 @@
 		879D59232CEA301A0080BD66 /* TasksListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879D591F2CEA301A0080BD66 /* TasksListCell.swift */; };
 		879D59242CEA301A0080BD66 /* TasksListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879D59202CEA301A0080BD66 /* TasksListView.swift */; };
 		879D59252CEA301A0080BD66 /* TaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879D59212CEA301A0080BD66 /* TaskView.swift */; };
+		87D47E6B2CEBEC84002015F7 /* Src.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D47E6A2CEBEC84002015F7 /* Src.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		879D591F2CEA301A0080BD66 /* TasksListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksListCell.swift; sourceTree = "<group>"; };
 		879D59202CEA301A0080BD66 /* TasksListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksListView.swift; sourceTree = "<group>"; };
 		879D59212CEA301A0080BD66 /* TaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskView.swift; sourceTree = "<group>"; };
+		87D47E6A2CEBEC84002015F7 /* Src.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Src.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 				8715335B2CE8F61E001CFC63 /* Preview Content */,
 				8715335C2CE8F61E001CFC63 /* Assets.xcassets */,
 				8715335D2CE8F61E001CFC63 /* Entity.swift */,
+				87D47E6A2CEBEC84002015F7 /* Src.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -182,6 +185,7 @@
 				879D59242CEA301A0080BD66 /* TasksListView.swift in Sources */,
 				879D59252CEA301A0080BD66 /* TaskView.swift in Sources */,
 				871533692CE8F61E001CFC63 /* Router.swift in Sources */,
+				87D47E6B2CEBEC84002015F7 /* Src.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

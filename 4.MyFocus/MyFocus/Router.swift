@@ -7,7 +7,7 @@ final class Router {
         return TasksListView(presenter: presenter)
     }
 
-    static func createTaskView(text: String) -> some View {
-        return TaskView(text: text)
+    static func createTaskView(title: String, text: String, date: String) -> some View {
+        return TaskView(title: title, text: text, date: date)
     }
 }

@@ -18,7 +18,7 @@ class Presenter: ObservableObject {
         return interactor.fetchTasks()
     }
 
-    func fetchDateString(for task: Task) -> String {
-        return interactor.convertDateToString(for: task)
-    }
+//    func fetchDateString(for task: Task) -> String {
+//        return interactor.convertDateToString(for: task)
+//    }
 }
