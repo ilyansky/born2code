@@ -20,7 +20,7 @@ class Presenter: ObservableObject {
     }
 }
 
-// MARK: - CRUD Closed Implementation
+// MARK: - Communication with DataManager (Interactor), Closed for Views Interfaces
 extension Presenter {
     private func getAllTasks() {
         DispatchQueue.main.async {
@@ -44,11 +44,11 @@ extension Presenter {
     }
 }
 
-// MARK: - Open Interfaces
+// MARK: - Opened for Views Interfaces
 extension Presenter {
-    func handle(task: Task?, title: String, text: String) {
+    func handle(task: Task?, title: String, text: String, completed: Bool = false) {
         DispatchQueue.global().async {
-            self.dataManager.saveOrUpdateOrDiscardTask(task: task, title: title, text: text)
+            self.dataManager.saveOrUpdateOrDiscardTask(task: task, title: title, text: text, completed: completed)
         }
     }
 

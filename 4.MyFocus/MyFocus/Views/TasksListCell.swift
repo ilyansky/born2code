@@ -2,7 +2,9 @@ import SwiftUI
 
 struct TasksListCell: View {
     @State private var done = false
-
+    @ObservedObject var presenter = Presenter()
+    
+    var task: Task
     var title: String
     var text: String
     var date: String
@@ -19,6 +21,12 @@ struct TasksListCell: View {
                     }
                     .toggleStyle(.button)
                     .buttonStyle(PlainButtonStyle())
+                    .onChange(of: done) { _, newValue in
+                        presenter.handle(task: task,
+                                         title: task.title ?? "",
+                                         text: task.text ?? "",
+                                         completed: newValue)
+                    }
 
                     Spacer()
                 }
@@ -76,7 +84,7 @@ struct CheckBox: View {
 
 #Preview {
     TasksListCell(
-        title: "Some title",
+        task: Task(), title: "Some title",
         text: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
         date: "09/10/24"
     )

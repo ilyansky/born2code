@@ -74,7 +74,8 @@ struct BodyView: View {
                             presenter: presenter,
                             task: task)
                     } label: {
-                        TasksListCell(title: task.title ?? "",
+                        TasksListCell(task: task,
+                                      title: task.title ?? "",
                                       text: task.text ?? "",
                                       date: "date")
                     }

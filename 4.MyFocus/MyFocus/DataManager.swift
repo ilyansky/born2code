@@ -16,7 +16,7 @@ class DataManager {
     }
 }
 
-// MARK: - Core Data Base Logic
+// MARK: - Core CRUD Logic
 extension DataManager {
     func saveChanges() {
         let context = container.viewContext
@@ -89,11 +89,13 @@ extension DataManager {
 
 // MARK: - Handle Data Logic
 extension DataManager {
-    func saveOrUpdateOrDiscardTask(task: Task?, title: String, text: String) {
+    func saveOrUpdateOrDiscardTask(task: Task?, title: String, text: String, completed: Bool) {
         if let task {
             update(task: task,
                    title: title == "" ? "Новая заметка" : title,
-                   text: text == "" ? "Нет дополнительного текста" : text)
+                   text: text == "" ? "Нет дополнительного текста" : text,
+                   completed: completed
+            )
         } else {
             if title != "" || text != "" {
                 createTask(title: title == "" ? "Новая заметка" : title,
