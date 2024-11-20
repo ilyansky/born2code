@@ -20,7 +20,7 @@ class Presenter: ObservableObject {
     }
 }
 
-// MARK: - Communication with DataManager (Interactor), Closed for Views Interfaces
+// MARK: - Communication with DataManager
 extension Presenter {
     private func getAllTasks() {
         DispatchQueue.main.async {
@@ -28,36 +28,40 @@ extension Presenter {
         }
     }
 
-    private func createTask(title: String, text: String) {
-        dataManager.createTask(title: title, text: text)
-        getAllTasks()
-    }
-
-    private func update(task: Task, title: String, text: String) {
-        dataManager.update(task: task, title: title, text: text)
-        getAllTasks()
-    }
-
     private func delete(task: Task) {
-        dataManager.delete(task: task)
-        getAllTasks()
+        self.dataManager.delete(task: task)
+        self.getAllTasks()
     }
 }
 
-// MARK: - Opened for Views Interfaces
+// MARK: - Interfaces for Views
 extension Presenter {
     func handle(task: Task?, title: String, text: String, completed: Bool = false) {
-        DispatchQueue.global().async {
-            self.dataManager.saveOrUpdateOrDiscardTask(task: task, title: title, text: text, completed: completed)
+        DispatchQueue.main.async {
+            self.dataManager.saveOrUpdateOrDiscardTask(task: task,
+                                                       title: title,
+                                                       text: text,
+                                                       completed: completed)
         }
     }
 
     func deleteTask(_ task: Task) {
-        DispatchQueue.global().async {
+        DispatchQueue.main.async {
             self.delete(task: task)
         }
     }
 
+    func findTasks(by title: String) {
+        DispatchQueue.main.async {
+            self.tasks = title == ""
+            ? self.dataManager.readTasks()
+            : self.dataManager.readTasks(predicateFormat: title)
+        }
+    }
+}
+
+// MARK: - Support
+extension Presenter {
     func countTasks() -> String {
         let count = tasks.count
 
@@ -71,14 +75,6 @@ extension Presenter {
         }
 
         return "\(count) \(textTail)"
-    }
-
-    func findTasks(by title: String) {
-        DispatchQueue.main.async {
-            self.tasks = title == ""
-            ? self.dataManager.readTasks()
-            : self.dataManager.readTasks(predicateFormat: title)
-        }
     }
 
     func dateToString(date: Date) -> String {

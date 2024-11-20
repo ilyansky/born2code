@@ -2,25 +2,46 @@
 import Foundation
 import CoreData
 
+// MARK: - Data Module
 class DataManager {
     static let shared = DataManager()
     let container: NSPersistentContainer
     let networkManager = NetworkManager()
 
     init() {
-        networkManager.handleNetworkLogic()
-
         container = NSPersistentContainer(name: "MyFocus")
-
         container.loadPersistentStores { description, error in
             if let error {
                 fatalError("Core Data failed to load => \(error.localizedDescription)")
             }
         }
+
+        if isFirstLoad() {
+            DispatchQueue.main.async {
+                self.networkManager.handleNetworkLogic() {
+                    self.fetchDataFromApi()
+                }
+            }
+        }
     }
+
+    private func isFirstLoad() -> Bool {
+        return !UserDefaults.standard.bool(forKey: NetworkManager.firstLoadKey)
+    }
+
+    private func fetchDataFromApi() {
+        if let data = self.networkManager.json?.todos {
+            for item in data {
+                self.createTask(title: item.todo,
+                                text: "Нет дополнительного текста",
+                                completed: item.completed)
+            }
+        }
+    }
+
 }
 
-// MARK: - Core CRUD Logic
+// MARK: - CRUD Implementation
 extension DataManager {
     func saveChanges() {
         let context = container.viewContext
@@ -34,13 +55,13 @@ extension DataManager {
         }
     }
 
-    func createTask(title: String, text: String) {
+    func createTask(title: String, text: String, completed: Bool = false) {
         let task = Task(context: container.viewContext)
 
         task.id = UUID()
         task.title = title
         task.text = text
-        task.completed = false
+        task.completed = completed
         task.createdAt = Date()
 
         saveChanges()
@@ -89,10 +110,7 @@ extension DataManager {
         container.viewContext.delete(task)
         saveChanges()
     }
-}
 
-// MARK: - Handle Data Logic
-extension DataManager {
     func saveOrUpdateOrDiscardTask(task: Task?, title: String, text: String, completed: Bool) {
         if let task {
             update(task: task,
@@ -109,22 +127,30 @@ extension DataManager {
     }
 }
 
-// MARK: - Network Logic
+// MARK: - Network Module
 class NetworkManager {
+    static let firstLoadKey = "hasLoadedBefore"
     private let api = "https://dummyjson.com/todos"
     var json: Response?
 
-    func handleNetworkLogic() {
-        getTasksFromApi()
+    func handleNetworkLogic(clos: @escaping () -> Void) {
+        getTasksFromApi() {
+            self.markAsLoaded()
+            clos()
+        }
     }
 
-    private func getTasksFromApi() {
+    private func markAsLoaded() {
+        UserDefaults.standard.set(true, forKey: NetworkManager.firstLoadKey)
+    }
+
+    private func getTasksFromApi(clos: @escaping () -> Void) {
         guard let url = URL(string: api) else { return }
 
         URLSession.shared.dataTask(with: url) { data, response, error in
             guard let data = data, error == nil else { return }
             self.decode(data: data)
-            self.parseJson()
+            clos()
         }.resume()
     }
 
@@ -136,24 +162,4 @@ class NetworkManager {
             print(String(describing: error))
         }
     }
-
-    private func parseJson() {
-        guard let json = json else { return }
-
-        for item in json.todos {
-            print(item.todo, item.completed)
-        }
-
-    }
-
-
-}
-
-struct Response: Codable {
-    let todos: [Todo]
-}
-
-struct Todo: Codable {
-    let todo: String
-    let completed: Bool
 }

@@ -1,8 +1,10 @@
 import SwiftUI
 
+
 struct TaskView: View {
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
     @ObservedObject var presenter: Presenter
+    @ObservedObject private var keyboardObserver = KeyboardObserver()
     @State private var titleField: String
     @State private var textField: String
 
@@ -30,8 +32,8 @@ struct TaskView: View {
             HStack {
                 Button  {
                     presenter.handle(task: task,
-                                         title: titleField.description,
-                                         text: textField.description)
+                                     title: titleField.description,
+                                     text: textField.description)
                     presentationMode.wrappedValue.dismiss()
                 } label: {
                     HStack {
@@ -51,8 +53,10 @@ struct TaskView: View {
                 Button  {
                     UIApplication.shared.endEditing()
                 } label: {
-                    Text("Готово")
-                        .foregroundStyle(Color.yellow)
+                    if keyboardObserver.isKeyboardVisible {
+                        Text("Готово")
+                            .foregroundStyle(Color.yellow)
+                    }
                 }
                 .padding()
             }
@@ -65,6 +69,7 @@ struct TaskView: View {
                 .padding(.bottom, 5)
                 .font(Font.system(size: 40))
                 .fontWeight(.bold)
+                .tint(Color.cyellow)
 
             Text(createdAt)
                 .padding([.leading, .trailing])
@@ -75,6 +80,7 @@ struct TaskView: View {
                 .disableAutocorrection(true)
                 .padding()
                 .font(Font.system(size: 19))
+                .tint(Color.cyellow)
 
             Spacer()
         }

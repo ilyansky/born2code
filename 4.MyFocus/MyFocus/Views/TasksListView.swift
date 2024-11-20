@@ -25,6 +25,7 @@ struct HeaderView: View {
             Text("Задачи")
                 .font(.largeTitle)
                 .bold()
+
             Spacer()
         }
         .padding()
@@ -39,6 +40,7 @@ struct HeaderView: View {
                 .disableAutocorrection(true)
                 .font(.title2)
                 .fontWeight(.semibold)
+                .tint(Color.cyellow)
                 .onChange(of: searchString) { _, newValue in
                     presenter.findTasks(by: newValue)
                 }
@@ -50,7 +52,7 @@ struct HeaderView: View {
                     .padding(.leading, 10)
                     .foregroundStyle(Color.cgray2)
                 Spacer()
-                Image(systemName: "microphone.fill")
+                Image(systemName: "mic.fill")
                     .resizable()
                     .scaledToFill()
                     .frame(width: micSize, height: micSize)
@@ -113,7 +115,7 @@ struct BottomView: View {
                 }
             }
         }
-        .padding(.top)
+        .padding([.top, .bottom], 20)
         .background(Color.cgray)
     }
 }
@@ -167,6 +169,7 @@ struct ContextMenu: View {
                     Image(systemName: "square.and.pencil")
                 }
             }
+            .background(Color.cyellow)
 
             Button(action: {}) {
                 HStack {
