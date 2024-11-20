@@ -80,5 +80,12 @@ extension Presenter {
             : self.dataManager.readTasks(predicateFormat: title)
         }
     }
+
+    func dateToString(date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/yy"
+        let dateString = formatter.string(from: date)
+        return dateString
+    }
 }
 

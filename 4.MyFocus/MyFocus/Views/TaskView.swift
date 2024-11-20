@@ -15,12 +15,12 @@ struct TaskView: View {
         if let task {
             titleField = task.title ?? ""
             textField = task.text ?? ""
-            createdAt = "date"
+            createdAt = presenter.dateToString(date: task.createdAt ?? Date())
             self.task = task
         } else {
             titleField = ""
             textField = ""
-            createdAt = "date"
+            createdAt = presenter.dateToString(date: Date())
         }
     }
 

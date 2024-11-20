@@ -74,19 +74,15 @@ struct BodyView: View {
                             presenter: presenter,
                             task: task)
                     } label: {
-                        TasksListCell(task: task,
-                                      title: task.title ?? "",
-                                      text: task.text ?? "",
-                                      date: "date")
+                        TasksListCell(task: task)
                     }
                     .contextMenu {
                         ContextMenu(
                             presenter: presenter,
                             task: task)
                     } preview: {
-                        PreviewContextMenu(title: task.title ?? "",
-                                           text: task.text ?? "",
-                                           date: "date")
+                        PreviewContextMenu(presenter: presenter,
+                                           task: task)
                     }
                 }
             }
@@ -123,22 +119,22 @@ struct BottomView: View {
 }
 
 struct PreviewContextMenu: View {
-    var title: String
-    var text: String
-    var date: String
+    @ObservedObject var presenter: Presenter
+
+    var task: Task
 
     var body: some View {
         VStack(alignment: .leading) {
-            Text(title)
+            Text(task.title ?? "")
                 .font(.title2)
                 .bold()
                 .padding(.bottom, 1)
                 .foregroundStyle(Color.cwhite)
 
-            Text(text)
+            Text(task.text ?? "")
                 .foregroundStyle(Color.cwhite)
 
-            Text(date)
+            Text(presenter.dateToString(date: task.createdAt ?? Date()))
                 .foregroundStyle(Color.cstroke)
                 .padding(.top, 1)
 
@@ -191,8 +187,6 @@ struct ContextMenu: View {
         }
     }
 }
-
-
 
 #Preview {
     TasksListView()

@@ -5,9 +5,9 @@ struct TasksListCell: View {
     @ObservedObject var presenter = Presenter()
     
     var task: Task
-    var title: String
-    var text: String
-    var date: String
+//    var title: String
+//    var text: String
+//    var date: String
 
     var body: some View {
         VStack {
@@ -34,7 +34,7 @@ struct TasksListCell: View {
 
                 // Title, text, date
                 VStack(alignment: .leading) {
-                    Text(title)
+                    Text(task.title ?? "")
                         .frame(alignment: .leading)
                         .lineLimit(1)
                         .font(.title2)
@@ -43,11 +43,11 @@ struct TasksListCell: View {
                         .foregroundStyle(done ? Color.cgray2 : Color.cwhite)
                         .strikethrough(done ? true : false)
 
-                    Text(text)
+                    Text(task.text ?? "")
                         .lineLimit(2)
                         .foregroundStyle(done ? Color.cgray2 : Color.cwhite)
 
-                    Text(date)
+                    Text(presenter.dateToString(date: task.createdAt ?? Date()))
                         .foregroundStyle(Color.cgray2)
                         .padding(.top, 1)
 
@@ -83,9 +83,5 @@ struct CheckBox: View {
 }
 
 #Preview {
-    TasksListCell(
-        task: Task(), title: "Some title",
-        text: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
-        date: "09/10/24"
-    )
+    TasksListCell(task: Task())
 }

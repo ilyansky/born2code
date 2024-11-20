@@ -1,5 +1,8 @@
+// MARK: - INTERACTOR
+
 import Foundation
 import CoreData
+
 
 class DataManager {
     static let shared = DataManager()
@@ -103,4 +106,6 @@ extension DataManager {
             }
         }
     }
+
+    
 }
