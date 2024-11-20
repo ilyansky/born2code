@@ -1,21 +1,19 @@
 import SwiftUI
 
 struct TasksListView: View {
-    @ObservedObject var presenter: Presenter
+    @StateObject var presenter = Presenter()
 
     var body: some View {
         NavigationStack {
-            HeaderView()
-            BodyView()
-            BottomView()
+            HeaderView(presenter: presenter)
+            BodyView(presenter: presenter)
+            BottomView(presenter: presenter)
         }
-
-
     }
-
 }
 
 struct HeaderView: View {
+    @ObservedObject var presenter: Presenter
     @State private var searchString: String = ""
 
     private let magnifyingGlassSize: CGFloat = 20
@@ -41,6 +39,9 @@ struct HeaderView: View {
                 .disableAutocorrection(true)
                 .font(.title2)
                 .fontWeight(.semibold)
+                .onChange(of: searchString) { _, newValue in
+                    presenter.findTasks(by: newValue)
+                }
 
             HStack {
                 Image(systemName: "magnifyingglass")
@@ -62,42 +63,29 @@ struct HeaderView: View {
 }
 
 struct BodyView: View {
-    var tasks = [Task(title: "Title1",
-                      text: "Text1 Text1 Text1 Text1\nText1 Text1 Text1 Text1\nText1 Text1 Text1 Text1\nText1 Text1 Text1 Text1\nText1 Text1 Text1 Text1\nText1 Text1 Text1 Text1\nText1 Text1 Text1 Text1\nText1 Text1 Text1 Text1\nText1 Text1 Text1 Text1\nText1 Text1 Text1 Text1\nText1 Text1 Text1 Text1\nText1 Text1 Text1 Text1\nText1 Text1 Text1 Text1\nText1 Text1 Text1 Text1\nText1 Text1 Text1 Text1\nText1 Text1 Text1 Text1\n",
-                      date: "18/11/24"),
-                 Task(title: "Title2 Title2 Title2 Title2 Title2 Title2 \nTitle2 Title2 ",
-                      text: "Text2",
-                      date: "18/11/24"),
-                 Task(title: "Title3",
-                      text: "Text3",
-                      date: "18/11/24"),
-                 Task(title: "Title3",
-                      text: "Text3",
-                      date: "18/11/24"),
-                 Task(title: "Title3",
-                      text: "Text3",
-                      date: "18/11/24")
-    ]
+    @ObservedObject var presenter: Presenter
 
     var body: some View {
         ScrollView {
             LazyVStack {
-                ForEach(tasks) { task in
+                ForEach(presenter.tasks.reversed()) { task in
                     NavigationLink {
-                        Router.createTaskView(title: task.title,
-                                              text: task.text,
-                                              date: task.date)
+                        Router.openTaskView(
+                            presenter: presenter,
+                            task: task)
                     } label: {
-                        TasksListCell(title: task.title,
-                                      text: task.text,
-                                      date: task.date)
+                        TasksListCell(title: task.title ?? "",
+                                      text: task.text ?? "",
+                                      date: "date")
                     }
                     .contextMenu {
-                        ContextMenu()
+                        ContextMenu(
+                            presenter: presenter,
+                            task: task)
                     } preview: {
-                        PreviewContextMenu(title: task.title,
-                                           text: task.text,
-                                           date: task.date)
+                        PreviewContextMenu(title: task.title ?? "",
+                                           text: task.text ?? "",
+                                           date: "date")
                     }
                 }
             }
@@ -107,6 +95,32 @@ struct BodyView: View {
 
 }
 
+struct BottomView: View {
+    @ObservedObject var presenter: Presenter
+
+    private let squarePenSize: CGFloat = 30
+
+    var body: some View {
+        ZStack {
+            Text(presenter.countTasks())
+            HStack {
+                Spacer()
+                NavigationLink {
+                    Router.openTaskView(presenter: presenter)
+                } label: {
+                    Image(systemName: "square.and.pencil")
+                        .resizable()
+                        .frame(width: squarePenSize, height: squarePenSize)
+                        .foregroundStyle(Color.cyellow)
+                        .padding(.trailing, 30)
+                }
+            }
+        }
+        .padding(.top)
+        .background(Color.cgray)
+    }
+}
+
 struct PreviewContextMenu: View {
     var title: String
     var text: String
@@ -114,44 +128,48 @@ struct PreviewContextMenu: View {
 
     var body: some View {
         VStack(alignment: .leading) {
-                Text(title)
-                    .font(.title2)
-                    .bold()
-                    .padding(.bottom, 1)
-                    .foregroundStyle(Color.cwhite)
+            Text(title)
+                .font(.title2)
+                .bold()
+                .padding(.bottom, 1)
+                .foregroundStyle(Color.cwhite)
 
-                Text(text)
-                    .foregroundStyle(Color.cwhite)
+            Text(text)
+                .foregroundStyle(Color.cwhite)
 
-                Text(date)
-                    .foregroundStyle(Color.cstroke)
-                    .padding(.top, 1)
+            Text(date)
+                .foregroundStyle(Color.cstroke)
+                .padding(.top, 1)
 
-                Spacer()
-            }
-            .frame(
-                minWidth: UIScreen.screenWidth * 0.3,
-                maxWidth: UIScreen.screenWidth * 0.9,
-                minHeight: UIScreen.screenHeight * 0.1,
-                maxHeight: UIScreen.screenHeight * 0.5
-            )
-            .padding(.top, 20)
-            .padding(.bottom, 15)
-            .padding([.leading, .trailing], 20)
-
+            Spacer()
+        }
+        .frame(
+            minWidth: UIScreen.screenWidth * 0.3,
+            maxWidth: UIScreen.screenWidth * 0.9,
+            minHeight: UIScreen.screenHeight * 0.1,
+            maxHeight: UIScreen.screenHeight * 0.5
+        )
+        .padding(.top, 20)
+        .padding(.bottom, 15)
+        .padding([.leading, .trailing], 20)
     }
 }
 
 struct ContextMenu: View {
+    @ObservedObject var presenter: Presenter
+    var task: Task
+
     var body: some View {
         VStack {
-            Button(action: {}) {
+            NavigationLink {
+                Router.openTaskView(presenter: presenter,
+                                    task: task)
+            } label: {
                 HStack {
                     Text("Редактировать")
                     Image(systemName: "square.and.pencil")
                 }
             }
-            .background(Color.cwhite2)
 
             Button(action: {}) {
                 HStack {
@@ -161,7 +179,7 @@ struct ContextMenu: View {
             }
 
             Button(role: .destructive) {
-                // some action
+                presenter.deleteTask(task)
             } label: {
                 HStack {
                     Text("Удалить")
@@ -173,30 +191,8 @@ struct ContextMenu: View {
     }
 }
 
-struct BottomView: View {
-    private let squarePenSize: CGFloat = 30
 
-    var body: some View {
-        ZStack {
-            Text("3 Задачи")
-            HStack {
-                Spacer()
-                Button {
-                } label: {
-                    Image(systemName: "square.and.pencil")
-                        .resizable()
-                        .frame(width: squarePenSize, height: squarePenSize)
-                        .foregroundStyle(Color.cyellow)
-                        .padding(.trailing, 25)
-                }
-                .padding(.trailing, 5)
-            }
-        }
-        .padding(.top)
-        .background(Color.cgray)
-    }
-}
 
 #Preview {
-    TasksListView(presenter: Presenter(interactor: Interactor()))
+    TasksListView()
 }

@@ -1,24 +1,84 @@
 import SwiftUI
 
 class Presenter: ObservableObject {
-    private let interactor: InteractorProtocol
-    var tasks: [Task] = []
+    let dataManager = DataManager.shared
+    @Published var tasks: [Task] = []
 
-    init(interactor: InteractorProtocol) {
-        self.interactor = interactor
-        loadTasks()
+    init() {
+        getAllTasks()
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(contextDidChange),
+            name: .NSManagedObjectContextObjectsDidChange,
+            object: dataManager.container.viewContext
+        )
     }
 
-    func loadTasks() {
-        tasks = interactor.fetchTasks()
+    @objc private func contextDidChange(notification: Notification) {
+        getAllTasks()
     }
-
-    func fetchTasks() -> [Task] {
-        print(1)
-        return interactor.fetchTasks()
-    }
-
-//    func fetchDateString(for task: Task) -> String {
-//        return interactor.convertDateToString(for: task)
-//    }
 }
+
+// MARK: - CRUD Closed Implementation
+extension Presenter {
+    private func getAllTasks() {
+        DispatchQueue.main.async {
+            self.tasks = self.dataManager.readTasks()
+        }
+    }
+
+    private func createTask(title: String, text: String) {
+        dataManager.createTask(title: title, text: text)
+        getAllTasks()
+    }
+
+    private func update(task: Task, title: String, text: String) {
+        dataManager.update(task: task, title: title, text: text)
+        getAllTasks()
+    }
+
+    private func delete(task: Task) {
+        dataManager.delete(task: task)
+        getAllTasks()
+    }
+}
+
+// MARK: - Open Interfaces
+extension Presenter {
+    func handle(task: Task?, title: String, text: String) {
+        DispatchQueue.global().async {
+            self.dataManager.saveOrUpdateOrDiscardTask(task: task, title: title, text: text)
+        }
+    }
+
+    func deleteTask(_ task: Task) {
+        DispatchQueue.global().async {
+            self.delete(task: task)
+        }
+    }
+
+    func countTasks() -> String {
+        let count = tasks.count
+
+        let textTail = switch count % 10 {
+        case 2...4:
+            "Задачи"
+        case 1:
+            "Задача"
+        default:
+            "Задач"
+        }
+
+        return "\(count) \(textTail)"
+    }
+
+    func findTasks(by title: String) {
+        DispatchQueue.main.async {
+            self.tasks = title == ""
+            ? self.dataManager.readTasks()
+            : self.dataManager.readTasks(predicateFormat: title)
+        }
+    }
+}
+

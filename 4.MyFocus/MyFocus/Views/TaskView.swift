@@ -1,28 +1,63 @@
 import SwiftUI
 
 struct TaskView: View {
-
-
-    var title: String
-    var text: String
-    var date: String
-
+    @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
+    @ObservedObject var presenter: Presenter
     @State private var titleField: String
     @State private var textField: String
 
-    init(title: String, text: String, date: String) {
-        self.title = title
-        self.text = text
-        self.date = date
-        self.titleField = title
-        self.textField = text
+    var createdAt: String
+    var task: Task?
+
+    init(presenter: Presenter, task: Task?) {
+        self.presenter = presenter
+
+        if let task {
+            titleField = task.title ?? ""
+            textField = task.text ?? ""
+            createdAt = "date"
+            self.task = task
+        } else {
+            titleField = ""
+            textField = ""
+            createdAt = "date"
+        }
     }
 
     var body: some View {
-
         VStack(alignment: .leading) {
-            CustomBackButton()
+            // Custom Head Bar
+            HStack {
+                Button  {
+                    presenter.handle(task: task,
+                                         title: titleField.description,
+                                         text: textField.description)
+                    presentationMode.wrappedValue.dismiss()
+                } label: {
+                    HStack {
+                        Image(systemName: "chevron.compact.left")
+                            .resizable()
+                            .frame(width: 15, height: 15)
+                            .foregroundStyle(Color.yellow)
+                        Text("Назад")
+                            .foregroundStyle(Color.yellow)
+                        Spacer()
+                    }
+                }
+                .padding()
 
+                Spacer()
+
+                Button  {
+                    UIApplication.shared.endEditing()
+                } label: {
+                    Text("Готово")
+                        .foregroundStyle(Color.yellow)
+                }
+                .padding()
+            }
+
+            // Body
             TextField("Заголовок", text: $titleField, axis: .vertical)
                 .textFieldStyle(.plain)
                 .disableAutocorrection(true)
@@ -31,7 +66,7 @@ struct TaskView: View {
                 .font(Font.system(size: 40))
                 .fontWeight(.bold)
 
-            Text(date)
+            Text(createdAt)
                 .padding([.leading, .trailing])
                 .foregroundStyle(Color.cgray2)
 
@@ -48,42 +83,7 @@ struct TaskView: View {
 
 }
 
-struct CustomBackButton: View {
-    @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
-
-    var body: some View {
-        HStack {
-            Button  {
-                presentationMode.wrappedValue.dismiss()
-            } label: {
-                HStack {
-                    Image(systemName: "chevron.compact.left")
-                        .resizable()
-                        .frame(width: 15, height: 15)
-                        .foregroundStyle(Color.yellow)
-                    Text("Назад")
-                        .foregroundStyle(Color.yellow)
-                    Spacer()
-                }
-            }
-            .padding()
-
-            Spacer()
-
-            Button  {
-                UIApplication.shared.endEditing()
-            } label: {
-                Text("Готово")
-                    .foregroundStyle(Color.yellow)
-
-            }
-            .padding()
-        }
-
-
-    }
-}
-
 #Preview {
-    TaskView(title: "Заняться спортом", text: "Составить список необходимых продуктов для ужина. Не забыть проверить, что уже есть в холодильнике.", date: "19/11/24")
+    TaskView(presenter: Presenter(),
+             task: nil)
 }

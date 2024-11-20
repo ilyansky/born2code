@@ -2,12 +2,11 @@ import SwiftUI
 
 final class Router {
     static func createTasksListView() -> some View {
-        let interactor = Interactor()
-        let presenter = Presenter(interactor: interactor)
-        return TasksListView(presenter: presenter)
+        return TasksListView()
     }
 
-    static func createTaskView(title: String, text: String, date: String) -> some View {
-        return TaskView(title: title, text: text, date: date)
+    static func openTaskView(presenter: Presenter, task: Task? = nil) -> some View {
+        return TaskView(presenter: presenter, task: task)
+            .navigationBarBackButtonHidden(true)
     }
 }
