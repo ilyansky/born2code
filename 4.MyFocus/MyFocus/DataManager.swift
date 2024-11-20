@@ -1,14 +1,15 @@
 // MARK: - INTERACTOR
-
 import Foundation
 import CoreData
-
 
 class DataManager {
     static let shared = DataManager()
     let container: NSPersistentContainer
+    let networkManager = NetworkManager()
 
     init() {
+        networkManager.handleNetworkLogic()
+
         container = NSPersistentContainer(name: "MyFocus")
 
         container.loadPersistentStores { description, error in
@@ -106,6 +107,53 @@ extension DataManager {
             }
         }
     }
+}
 
-    
+// MARK: - Network Logic
+class NetworkManager {
+    private let api = "https://dummyjson.com/todos"
+    var json: Response?
+
+    func handleNetworkLogic() {
+        getTasksFromApi()
+    }
+
+    private func getTasksFromApi() {
+        guard let url = URL(string: api) else { return }
+
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            guard let data = data, error == nil else { return }
+            self.decode(data: data)
+            self.parseJson()
+        }.resume()
+    }
+
+    private func decode(data: Data) {
+        do {
+            json = try JSONDecoder().decode(Response.self, from: data)
+
+        } catch {
+            print(String(describing: error))
+        }
+    }
+
+    private func parseJson() {
+        guard let json = json else { return }
+
+        for item in json.todos {
+            print(item.todo, item.completed)
+        }
+
+    }
+
+
+}
+
+struct Response: Codable {
+    let todos: [Todo]
+}
+
+struct Todo: Codable {
+    let todo: String
+    let completed: Bool
 }
