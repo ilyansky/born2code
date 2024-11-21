@@ -1,8 +1,6 @@
 import SwiftUI
 
-
 struct TaskView: View {
-    @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
     @ObservedObject var presenter: Presenter
     @ObservedObject private var keyboardObserver = KeyboardObserver()
     @State private var titleField: String
@@ -28,44 +26,11 @@ struct TaskView: View {
 
     var body: some View {
         VStack(alignment: .leading) {
-            // Custom Head Bar
-            HStack {
-                Button  {
-                    presenter.handle(task: task,
-                                     title: titleField.description,
-                                     text: textField.description)
-                    presentationMode.wrappedValue.dismiss()
-                } label: {
-                    HStack {
-                        Image(systemName: "chevron.compact.left")
-                            .resizable()
-                            .frame(width: 15, height: 15)
-                            .foregroundStyle(Color.yellow)
-                        Text("Назад")
-                            .foregroundStyle(Color.yellow)
-                        Spacer()
-                    }
-                }
-                .padding()
-
-                Spacer()
-
-                Button  {
-                    UIApplication.shared.endEditing()
-                } label: {
-                    if keyboardObserver.isKeyboardVisible {
-                        Text("Готово")
-                            .foregroundStyle(Color.yellow)
-                    }
-                }
-                .padding()
-            }
-
             // Body
             TextField("Заголовок", text: $titleField, axis: .vertical)
                 .textFieldStyle(.plain)
                 .disableAutocorrection(true)
-                .padding([.leading, .trailing])
+                .padding([.leading, .trailing, .top])
                 .padding(.bottom, 5)
                 .font(Font.system(size: 40))
                 .fontWeight(.bold)
@@ -83,6 +48,22 @@ struct TaskView: View {
                 .tint(Color.cyellow)
 
             Spacer()
+            HStack {
+                Spacer()
+                Button  {
+                    UIApplication.shared.endEditing()
+                } label: {
+                    if keyboardObserver.isKeyboardVisible {
+                        Image(systemName: "chevron.down.circle.fill")
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                            .cornerRadius(15)
+                            .foregroundStyle(Color.cyellow)
+
+                    }
+                }
+            }
+            .padding()
         }
     }
 

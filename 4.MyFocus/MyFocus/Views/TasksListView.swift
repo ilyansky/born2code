@@ -9,6 +9,7 @@ struct TasksListView: View {
             BodyView(presenter: presenter)
             BottomView(presenter: presenter)
         }
+        .tint(Color.cyellow)
     }
 }
 
@@ -78,6 +79,9 @@ struct BodyView: View {
                     } label: {
                         TasksListCell(task: task)
                     }
+                    .navigationBarTitle("Назад")
+                    .navigationBarHidden(true)
+
                     .contextMenu {
                         ContextMenu(
                             presenter: presenter,
@@ -88,8 +92,10 @@ struct BodyView: View {
                     }
                 }
             }
-            .padding([.leading, .trailing])
         }
+        .padding([.leading, .trailing], 25)
+
+
     }
 
 }

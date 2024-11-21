@@ -7,6 +7,6 @@ final class Router {
     
     static func openTaskView(presenter: Presenter, task: Task? = nil) -> some View {
         return TaskView(presenter: presenter, task: task)
-            .navigationBarBackButtonHidden(true)
+//            .navigationBarBackButtonHidden(true)
     }
 }
