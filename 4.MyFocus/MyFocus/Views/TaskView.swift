@@ -84,7 +84,6 @@ struct TaskView: View {
 
             Spacer()
         }
-
     }
 
 }
