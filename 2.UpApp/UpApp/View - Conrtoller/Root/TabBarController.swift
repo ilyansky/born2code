@@ -1,4 +1,5 @@
 import UIKit
+import Foundation
 
 // MARK: Project Hierarchy
 // Tab Bar - is the root
@@ -11,12 +12,12 @@ enum Tabs: Int {
     case progress
 }
 
-final class TabBarController: UITabBarController {
+class TabBarController: UITabBarController {
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         configureTabBar()
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

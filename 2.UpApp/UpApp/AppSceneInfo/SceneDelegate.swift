@@ -1,4 +1,5 @@
 import UIKit
+import Foundation
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -9,7 +10,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
 
-        let tabBarController = TabBarController()
+        let tabBarController = TabBarController(nibName: nil, bundle: nil)
 
         window = UIWindow(windowScene: windowScene)
         window?.rootViewController = tabBarController
