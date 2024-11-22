@@ -59,11 +59,15 @@ struct TaskView: View {
                             .frame(width: 30, height: 30)
                             .cornerRadius(15)
                             .foregroundStyle(Color.cyellow)
-
                     }
                 }
             }
             .padding()
+        }
+        .onDisappear() {
+            presenter.handle(task: task,
+                             title: titleField.description,
+                             text: textField.description)
         }
     }
 

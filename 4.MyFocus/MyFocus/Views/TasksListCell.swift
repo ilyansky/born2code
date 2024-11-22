@@ -36,7 +36,10 @@ struct TasksListCell: View {
 
                 // Title, text, date
                 VStack(alignment: .leading) {
-                    Text(task.title ?? "")
+                    Text(task.title == ""
+                         ? "Новая заметка"
+                         : (task.title ?? "")
+                    )
                         .frame(alignment: .leading)
                         .lineLimit(1)
                         .font(.title3)
@@ -45,7 +48,10 @@ struct TasksListCell: View {
                         .foregroundStyle(completed ? Color.cgray2 : Color.cwhite)
                         .strikethrough(completed ? true : false)
 
-                    Text(task.text ?? "")
+                    Text(task.text == ""
+                         ? "Нет дополнительного текста"
+                         : (task.text ?? "")
+                    )
                         .lineLimit(2)
                         .foregroundStyle(completed ? Color.cgray2 : Color.cwhite)
 

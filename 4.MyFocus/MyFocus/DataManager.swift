@@ -114,14 +114,13 @@ extension DataManager {
     func saveOrUpdateOrDiscardTask(task: Task?, title: String, text: String, completed: Bool) {
         if let task {
             update(task: task,
-                   title: title == "" ? "Новая заметка" : title,
-                   text: text == "" ? "Нет дополнительного текста" : text,
-                   completed: completed
-            )
+                   title: title,
+                   text: text,
+                   completed: completed)
         } else {
             if title != "" || text != "" {
-                createTask(title: title == "" ? "Новая заметка" : title,
-                           text: text == "" ? "Нет дополнительного текста" : text)
+                createTask(title: title,
+                           text: text)
             }
         }
     }
