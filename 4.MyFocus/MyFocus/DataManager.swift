@@ -33,7 +33,7 @@ class DataManager {
         if let data = self.networkManager.json?.todos {
             for item in data {
                 self.createTask(title: item.todo,
-                                text: "Нет дополнительного текста",
+                                text: "",
                                 completed: item.completed)
             }
         }
