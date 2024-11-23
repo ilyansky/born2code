@@ -142,7 +142,7 @@ extension MapViewController {
         do {
             try Auth.auth().signOut()
         } catch {
-            Src.showSignOutFailedAlert(vc: self)
+            Src.showAlert(vc: self, title: "Не удалось разлогиниться")
         }
         
         if let sd = self.view.window?.windowScene?.delegate as? SceneDelegate {
@@ -207,12 +207,12 @@ extension MapViewController {
                 guard let self = self else { return }
                 
                 if err != nil {
-                    Src.showSecondUnknownErrorAlert(vc: self)
+                    Src.showAlert(vc: self, title: "Ошибка")
                     return
                 }
                 
                 guard let ds = ds, ds.exists else {
-                    Src.showSecondUnknownErrorAlert(vc: self)
+                    Src.showAlert(vc: self, title: "Ошибка")
                     return
                 }
                 

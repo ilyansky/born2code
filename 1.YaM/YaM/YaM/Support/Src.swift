@@ -36,7 +36,7 @@ class Src {
     }
     
     // URLs
-    static let friendsListUrl = "https://yam-server-ad898-default-rtdb.europe-west1.firebasedatabase.app/users.json"    
+//    static let friendsListUrl = "https://yam-server-ad898-default-rtdb.europe-west1.firebasedatabase.app/users.json"    
     static var selfLogin = ""
    
     
@@ -59,8 +59,6 @@ class Src {
         ])
     }
     
-    /// delme
-    
     static var time1 = Date()
     static var time2 = Date()
     
@@ -80,7 +78,7 @@ class Src {
         print(dateString)
         print(nanosecString)
          */
-        return now 
+        return Date()
     }
     
     static func printSubTime(time1: Date, time2: Date) {
@@ -89,83 +87,15 @@ class Src {
         Src.time1 = Date()
         Src.time2 = Date()
     }
-    
-    ///
+
     // MARK: - Alerts
-    static func showBasicAlert(vc: UIViewController, title: String) {
+    static func showAlert(vc: UIViewController, title: String) {
         DispatchQueue.main.async {
             let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ок", style: .default))
             vc.present(alert, animated: true)
         }
     }
-    
-    static func showInvalidEmailAlert(vc: UIViewController) {
-        Src.showBasicAlert(vc: vc, title: "Почта занята")
-    }
-    
-    static func showInvalidPasswordAlert(vc: UIViewController) {
-        Src.showBasicAlert(vc: vc, title: "Слабый пароль")
-    }
-    
-    static func showInvalidLoginAlert(vc: UIViewController) {
-        Src.showBasicAlert(vc: vc, title: "Неверное имя пользователя")
-    }
-    
-    static func showEmailRepeatErrorAlert(vc: UIViewController, error: Error) {
-        Src.showBasicAlert(vc: vc, title: "Данная почта уже используется")
-        print(error.localizedDescription) // testme fixme
-    }
-    
-    static func showUnknownErrorAlert(vc: UIViewController, error: Error) {
-        Src.showBasicAlert(vc: vc, title: "Ошибка")
-        print(error.localizedDescription) // testme fixme
-    }
-    
-    static func showSecondUnknownErrorAlert(vc: UIViewController) {
-        Src.showBasicAlert(vc: vc, title: "Ошибка")
-    }
-    
-    static func showRegistrationErrorAlert(vc: UIViewController) {
-        Src.showBasicAlert(vc: vc, title: "Ошибка регистрации")
-    }
-    
-    static func showSignInErrorAlert(vc: UIViewController) {
-        Src.showBasicAlert(vc: vc, title: "Введённые данные неверны")
-    }
-    
-    static func showPasswordResendAlert(vc: UIViewController) {
-        Src.showBasicAlert(vc: vc, title: "На указанную почту отправлено письмо")
-    }
-    
-    static func showSignOutFailedAlert(vc: UIViewController) {
-        Src.showBasicAlert(vc: vc, title: "Не удалось разлогиниться")
-    }
-    
-    static func showNotConfirmeddAlert(vc: UIViewController) {
-        Src.showBasicAlert(vc: vc, title: "Почта не подтверждена")
-    }
-    
-    static func showUserDoesntExistAlert(vc: UIViewController) {
-        Src.showBasicAlert(vc: vc, title: "Пользователя с таким именем не существует")
-    }
-    
-    static func showItsYourLoginAlert(vc: UIViewController) {
-        Src.showBasicAlert(vc: vc, title: "Это Ваше имя")
-    }
-    
-    static func showInviteSentlert(vc: UIViewController) {
-        Src.showBasicAlert(vc: vc, title: "Приглашение отправлено")
-    }
-    
-    static func showYouHaveInviteFromThisUserAlert(vc: UIViewController) {
-        Src.showBasicAlert(vc: vc, title: "У Вас уже есть приглашение от данного пользователя")
-    }
-    
-    static func showThisIsYourFriendAlert(vc: UIViewController) {
-        Src.showBasicAlert(vc: vc, title: "Это уже Ваш друг")
-    }
-    
 }
 
 class TableView {

@@ -67,7 +67,6 @@ extension FriendsViewController {
 
 // MARK: - UI
 extension FriendsViewController {
-    
     private func setUI() {
         view.backgroundColor = .systemBackground
         view.addSubview(friendsLabel)

@@ -59,25 +59,25 @@ extension RegisterViewController {
             }
             
             if !loginValid! || !isValidLogin(login: login) {
-                Src.showInvalidLoginAlert(vc: self)
+                Src.showAlert(vc: self, title: "Неверное имя пользователя")
             } else if !emailValid! || !isValidEmail(email: email) {
-                Src.showInvalidEmailAlert(vc: self)
+                Src.showAlert(vc: self, title: "Некорректная почта")
             } else if !isValidPassword(password: password) {
-                Src.showInvalidPasswordAlert(vc: self)
+                Src.showAlert(vc: self, title: "Слабый пароль")
             } else {
                 Auth.auth().createUser(withEmail: email, password: password) { [weak self] result, error in
                     guard let self = self else { return }
                     if let _ = error {
                         print("createUser error")
                         nextVc = false
-                        Src.showInvalidEmailAlert(vc: self)
+                        Src.showAlert(vc: self, title: "Ошибка")
                         return
                     }
                     
                     guard let resultUser = result?.user else {
                         print("resultUser error")
                         nextVc = false
-                        Src.showSecondUnknownErrorAlert(vc: self)
+                        Src.showAlert(vc: self, title: "Ошибка")
                         return
                     }
                     
@@ -85,7 +85,7 @@ extension RegisterViewController {
                         if let _ = error {
                             print("sendEmail error")
                             nextVc = false
-                            Src.showSecondUnknownErrorAlert(vc: self)
+                            Src.showAlert(vc: self, title: "Ошибка")
                             return
                         }
                     }
@@ -107,7 +107,7 @@ extension RegisterViewController {
                             if error != nil {
                                 print("db error")
                                 nextVc = false
-                                Src.showSecondUnknownErrorAlert(vc: self)
+                                Src.showAlert(vc: self, title: "Ошибка")
                                 return
                             }
                         }

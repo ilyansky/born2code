@@ -41,7 +41,7 @@ extension LoginViewController {
             }
             
             if error != nil {
-                Src.showSignInErrorAlert(vc: self)
+                Src.showAlert(vc: self, title: "Введённые данные неверны")
                 return
             }
             

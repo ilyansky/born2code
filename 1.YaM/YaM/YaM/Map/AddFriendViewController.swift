@@ -27,26 +27,26 @@ class AddFriendViewController: UIViewController {
         let login = friendLoginTextField.text ?? ""
          
         if login.isEmpty {
-            Src.showInvalidLoginAlert(vc: self)
+            Src.showAlert(vc: self, title: "Неверное имя пользователя")
             return
         } else if login == Src.selfLogin {
-            Src.showItsYourLoginAlert(vc: self)
+            Src.showAlert(vc: self, title: "Это Ваше имя")
             return
         } else if model.invitesList.contains(login) {
-            Src.showYouHaveInviteFromThisUserAlert(vc: self)
+            Src.showAlert(vc: self, title: "У Вас уже есть приглашение от данного пользователя")
             return
         } else if model.friendsList.contains(login) {
-            Src.showThisIsYourFriendAlert(vc: self)
+            Src.showAlert(vc: self, title: "Это уже Ваш друг")
             return
         }
         
         model.checkUserExists(login: login) { res in
             if res {
                 self.model.addToArray(loginForSearch: login, arrayTitleForSearch: "invites", newValue: Src.selfLogin) {
-                    Src.showInviteSentlert(vc: self)
+                    Src.showAlert(vc: self, title: "Приглашение отправлено")
                 }
             } else {
-                Src.showUserDoesntExistAlert(vc: self)
+                Src.showAlert(vc: self, title: "Пользователя с таким именем не существует")
                 return
             }
         }

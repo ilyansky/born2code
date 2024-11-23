@@ -40,7 +40,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                     self.transitTo(rootViewController: vc)
                     
                     if !scene {
-                        Src.showNotConfirmeddAlert(vc: vc)
+                        Src.showAlert(vc: vc, title: "Почта не подтверждена")
                     }
                 }
             }
